@@ -1,0 +1,486 @@
+/* Logo text main style for responsive font size */
+.logo-text-main {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+  .logo-text-main {
+    font-size: 1rem;
+  }
+}
+/* Ultimate Premium Navbar Styles */
+:root {
+  --primary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --primary-hover: #00f2fe;
+  --text-color: rgba(255, 255, 255, 0.9);
+  --text-light: rgba(203, 213, 224, 0.8);
+  --bg-color: rgba(15, 32, 39, 0.95);
+  --bg-hover: rgba(79, 172, 254, 0.15);
+  --border-color: rgba(229, 231, 235, 0.1);
+  --glass-effect: rgba(15, 32, 39, 0.7);
+  --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --nav-height: 80px;
+}
+
+/* Navbar Container - Glass Morphism Effect */
+.navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  background: var(--glass-effect);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.navbar-container.scrolled {
+  background: rgba(15, 32, 39, 0.98);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: var(--nav-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Brand/Logo - Holographic Effect */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.navbar-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
+  transition: var(--transition);
+}
+
+.logo-highlight {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+.logo-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-gradient);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.6s ease;
+}
+
+.navbar-brand:hover .logo-highlight::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+
+/* Mobile Toggle Button - Animated */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+  position: relative;
+}
+
+.hamburger-line {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background-color: var(--text-color);
+  margin: 6px 0;
+  transition: var(--transition);
+  transform-origin: center;
+  position: relative;
+}
+.hamburger-lin {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background-color: var(--primary-hover);
+  margin: 6px 0;
+  transition: var(--transition);
+  transform-origin: center;
+  position: relative;
+}
+
+.hamburger-line::before,
+.hamburger-line::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.navbar-toggle.active .hamburger-line {
+  background-color: transparent;
+}
+
+.navbar-toggle.active .hamburger-line::before {
+  transform: translateY(8px) rotate(45deg);
+  opacity: 1;
+}
+
+.navbar-toggle.active .hamburger-line::after {
+  transform: translateY(-8px) rotate(-45deg);
+  opacity: 1;
+}
+
+/* Navbar Menu - Premium Styling */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  gap: 1.5rem;
+  padding: 0;
+  align-items: center;
+}
+
+/* Nav Links - Animated Underline */
+.nav-link, .dropdown-btn {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  font-weight: 600;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+  position: relative;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link::after, .dropdown-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-gradient);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+
+.nav-link:hover::after, 
+.dropdown-btn:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav-link:hover, 
+.dropdown-btn:hover,
+.nav-link.active {
+  color: white;
+}
+
+/* Dropdown Styles - Glass Morphism */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-btn {
+  padding-right: 1rem;
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  transition: var(--transition);
+}
+
+.dropdown-btn.active .dropdown-arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  list-style: none;
+  padding: 0.75rem 0;
+  min-width: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 10px);
+  transition: var(--transition);
+  z-index: 1000;
+  border: 1px solid var(--border-color);
+}
+
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent var(--glass-effect) transparent;
+}
+
+.dropdown-menu li a {
+  padding: 0.75rem 1.5rem;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: var(--transition);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  display: block;
+  position: relative;
+}
+
+.dropdown-menu li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1.5rem;
+  width: calc(100% - 3rem);
+  height: 1px;
+  background: var(--border-color);
+}
+
+.dropdown-menu li:last-child a::after {
+  display: none;
+}
+
+.dropdown-menu li a:hover {
+  color: white;
+  background: var(--bg-hover);
+}
+
+.dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* CTA Button - Glowing Effect */
+.navbar-cta {
+  margin-left: 2rem;
+}
+
+.cta-button {
+  background: var(--primary-gradient);
+  color: white;
+  padding: 0.75rem 1.75rem;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(79, 172, 254, 0.5);
+  border: none;
+  cursor: pointer;
+}
+
+
+
+
+
+/* Mobile Styles */
+
+@media (max-width: 992px) {
+  .navbar {
+    padding: 0 1rem;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .navbar-brand {
+    margin-right: 0;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  .navbar-logo {
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+    padding: 0;
+    white-space: nowrap;
+    max-width: 100vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .navbar-toggle {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    z-index: 1001;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-color);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+    padding: 2rem;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+
+  .navbar-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .navbar-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-link, .dropdown-btn {
+    padding: 1rem;
+    font-size: 1.1rem;
+    justify-content: center;
+  }
+
+  .dropdown-container {
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    width: 100%;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background-color: var(--bg-hover);
+    margin-top: 0.5rem;
+    border-radius: 0;
+    border: none;
+    transform: translateX(0) !important;
+  }
+
+  .dropdown-menu::before {
+    display: none;
+  }
+
+  .dropdown-menu.active {
+    display: block;
+  }
+
+  .dropdown-menu li a {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .navbar-cta {
+    margin: 2rem 0 0 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .cta-button {
+    display: inline-block;
+    width: 100%;
+    max-width: 250px;
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Scrolling Effect */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-container {
+  animation: fadeInDown 0.8s ease-out forwards;
+}

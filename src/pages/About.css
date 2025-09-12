@@ -1,0 +1,151 @@
+.about-section {
+  position: relative;
+  background:
+    radial-gradient(1000px 600px at 12% 15%, rgba(255, 212, 0, 0.10), transparent 60%),
+    radial-gradient(800px 480px at 85% 75%, rgba(255, 212, 0, 0.08), transparent 62%),
+    linear-gradient(180deg, #000000 0%, #050607 100%);
+  color: #f6f7f9;
+  overflow: hidden;
+}
+
+/* Floating tech particles in yellow */
+.circles-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.floating-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 212, 0, 0.38), rgba(255, 212, 0, 0.08));
+  box-shadow: 0 0 60px rgba(255, 212, 0, 0.22), inset 0 0 28px rgba(255, 212, 0, 0.12);
+  animation: floatY 18s ease-in-out infinite;
+}
+
+@keyframes floatY {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0.55; }
+  50%  { transform: translateY(-8vh) rotate(180deg); opacity: 0.85; }
+  100% { transform: translateY(0) rotate(360deg); opacity: 0.55; }
+}
+
+.floating-circle:nth-child(1) { width: 240px; height: 240px; top: 12%; left: 8%; animation-duration: 22s; }
+.floating-circle:nth-child(2) { width: 140px; height: 140px; top: 62%; left: 78%; animation-duration: 18s; }
+.floating-circle:nth-child(3) { width: 180px; height: 180px; top: 28%; left: 70%; animation-duration: 26s; }
+
+/* Section content layering */
+.section-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Headings with crisp underline */
+.section-heading {
+  color: #ffd400;
+  letter-spacing: 0.5px;
+}
+
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, #ffd400 0%, rgba(255, 212, 0, 0) 100%);
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  color: #cfd3da;
+}
+
+/* Two-column split layout */
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.about-pane {
+  background: #0a0b0d;
+  border: 1px solid rgba(255, 212, 0, 0.4);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.about-pane:hover {
+  border-color: rgba(255, 212, 0, 0.6);
+  transform: translateY(-2px);
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.pane-heading {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.6rem;
+  color: #ffd400;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pane-heading::before {
+  content: '';
+  width: 8px;
+  height: 24px;
+  background: #ffd400;
+  border-radius: 2px;
+}
+
+.about-pane p { color: #cfd3da; line-height: 1.7; }
+
+/* Bullet list with yellow accents */
+.mission-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+}
+
+.mission-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.6rem;
+  color: #d6dae0;
+}
+
+.mission-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 8px;
+  height: 8px;
+  background: #ffd400;
+  border-radius: 1px;
+}
+
+/* Yellow gradient text utility */
+.gradient-text {
+  background: linear-gradient(90deg, #ffd400, #ffdf33);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-split {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+  .section-heading::after {
+    width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pane-heading { font-size: 1.4rem; }
+}

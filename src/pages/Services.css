@@ -1,0 +1,261 @@
+.services-section {
+  background:
+    radial-gradient(900px 500px at 12% 20%, rgba(255, 212, 0, 0.08), transparent 60%),
+    radial-gradient(700px 420px at 88% 80%, rgba(255, 212, 0, 0.06), transparent 62%),
+    linear-gradient(180deg, #000000 0%, #050607 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hexagon-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" fill="none" stroke="rgba(79,172,254,0.05)" stroke-width="1"/></svg>');
+  background-size: 100px 100px;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* Horizontal scrollable carousel */
+.services-carousel {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  overflow-y: visible; /* allow hover lift without clipping */
+  padding-block: 12px; /* vertical room for hover translate/scale */
+  margin-top: 2rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  /* Hide native scrollbar visuals */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.services-carousel::-webkit-scrollbar { display: none; }
+
+.service-card {
+  background: linear-gradient(145deg, #0a0b0d, #121418);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(255, 212, 0, 0.15);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  min-width: 280px;
+  max-width: 320px;
+  scroll-snap-align: start;
+  color: #e6e8eb;
+  opacity: 1; /* keep card container visible; hide inner content instead */
+  transform: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.service-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(45deg, rgba(255, 212, 0, 0.2), transparent, rgba(255, 212, 0, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.service-card:hover {
+  transform: none;
+  border-color: rgba(255, 212, 0, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.service-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ffd400 0%, #ffdf33 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 212, 0, 0.25);
+}
+.service-icon svg { 
+  width: 24px; 
+  height: 24px; 
+  color: #101114; 
+  transition: transform 0.3s ease;
+}
+
+/* no icon movement on hover */
+.service-card:hover .service-icon { transform: none; box-shadow: 0 4px 12px rgba(255, 212, 0, 0.25); }
+
+.service-card h3 {
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem 0;
+  color: #ffffff;
+  position: relative;
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.service-card h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px; /* fixed underline width, no hover animation */
+  height: 2px;
+  background: linear-gradient(90deg, #ffd400, #ffdf33);
+  border-radius: 2px;
+  transition: none;
+}
+/* remove hover underline animation */
+
+.service-card p { 
+  color: #cfd3da; 
+  line-height: 1.6; 
+  margin: 0; 
+  font-size: 0.95rem;
+}
+
+.service-hover-indicator {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 212, 0, 0.5);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-hover-indicator {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+/* Enhanced carousel dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.carousel-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-dots .dot::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 212, 0, 0.5), transparent);
+  transition: left 0.6s ease;
+}
+
+.carousel-dots .dot:hover::before {
+  left: 100%;
+}
+
+.carousel-dots .dot.active {
+  background: rgba(255, 212, 0, 0.8);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 2px rgba(255, 212, 0, 0.3);
+}
+
+.carousel-dots .dot:hover {
+  background: rgba(255, 212, 0, 0.5);
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .service-card { 
+    min-width: 240px; 
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .service-icon {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .service-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.highlight {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.carousel-control {
+  background: rgba(255, 212, 0, 0.1);
+  border: 1px solid rgba(255, 212, 0, 0.2);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.carousel-control:hover {
+  background: rgba(255, 212, 0, 0.2);
+  border-color: rgba(255, 212, 0, 0.4);
+  transform: scale(1.05);
+}
+
+.carousel-control svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* Position arrows to the left and right of the cards */
+.services-carousel-container {
+  position: relative;
+  padding-inline: 0; /* no gutters since arrows are removed */
+}
+
+.services-carousel-container .carousel-control { display: none !important; }
+
+@media (max-width: 900px) {
+  .services-carousel-container { padding-inline: 0; }
+}
