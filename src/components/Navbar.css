@@ -12,12 +12,12 @@
 }
 /* Ultimate Premium Navbar Styles */
 :root {
-  --primary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --primary-hover: #00f2fe;
+  --primary-gradient: linear-gradient(135deg, #ffd400 0%, #ffdf33 100%);
+  --primary-hover: #ffd400;
   --text-color: rgba(255, 255, 255, 0.9);
   --text-light: rgba(203, 213, 224, 0.8);
   --bg-color: rgba(15, 32, 39, 0.95);
-  --bg-hover: rgba(79, 172, 254, 0.15);
+  --bg-hover: rgba(255, 212, 0, 0.15);
   --border-color: rgba(229, 231, 235, 0.1);
   --glass-effect: rgba(15, 32, 39, 0.7);
   --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
@@ -324,7 +324,7 @@
   white-space: nowrap;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(79, 172, 254, 0.5);
+  box-shadow: 0 0 15px rgba(255, 212, 0, 0.45);
   border: none;
   cursor: pointer;
 }

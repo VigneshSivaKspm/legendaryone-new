@@ -104,10 +104,15 @@ const Navbar = () => {
                 SERVICES <span className="dropdown-arrow">▼</span>
               </button>
               <ul className={`dropdown-menu ${activeDropdown === 'services' ? 'active' : ''}`}>
-                <li><NavLink to="/services">Custom Telco Software</NavLink></li>
-                <li><NavLink to="/services">Data & Analytics</NavLink></li>
-                <li><NavLink to="/services">Integration</NavLink></li>
-                <li><NavLink to="/services">DevOps</NavLink></li>
+                <li><NavLink to="/services">Software Development</NavLink></li>
+                <li><NavLink to="/services">Web Development</NavLink></li>
+                <li><NavLink to="/services">Branding</NavLink></li>
+                <li><NavLink to="/services">Technical Solutions</NavLink></li>
+                <li><NavLink to="/services">College Projects</NavLink></li>
+                <li><NavLink to="/services">E-commerce Solutions</NavLink></li>
+                <li><NavLink to="/services">Mobile App Development</NavLink></li>
+                <li><NavLink to="/services">UI/UX Design</NavLink></li>
+                <li><NavLink to="/services">Cloud & DevOps</NavLink></li>
               </ul>
             </li>
             <li
@@ -125,7 +130,7 @@ const Navbar = () => {
                 MORE <span className="dropdown-arrow">▼</span>
               </button>
               <ul className={`dropdown-menu ${activeDropdown === 'more' ? 'active' : ''}`}>
-                <li><NavLink to="/technologies">TECHNOLOGIES</NavLink></li>
+                <li><NavLink to="/technologies">TECH STACK</NavLink></li>
                 <li><NavLink to="/leadership">LEADERSHIP</NavLink></li>
                 <li><NavLink to="/projects">PROJECTS</NavLink></li>
                 <li><NavLink to="/industries">INDUSTRIES</NavLink></li>

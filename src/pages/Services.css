@@ -5,7 +5,22 @@
     linear-gradient(180deg, #000000 0%, #050607 100%);
   color: white;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* prevent hover effects from being clipped */
+}
+
+/* Ensure decorative background never blocks hover or overlaps cards */
+.services-background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.services-background .floating-shapes,
+.floating-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
 .hexagon-bg {
@@ -37,6 +52,8 @@
   margin-top: 2rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  position: relative; /* establish stacking context above decorative bg */
+  z-index: 2;
   /* Hide native scrollbar visuals */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -49,7 +66,10 @@
   border-radius: 16px;
   padding: 2rem 1.5rem;
   border: 1px solid rgba(255, 212, 0, 0.15);
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Limit transitions to non-layout properties to avoid hover flicker/hide */
+  transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   min-width: 280px;
   max-width: 320px;
@@ -58,6 +78,12 @@
   opacity: 1; /* keep card container visible; hide inner content instead */
   transform: none;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  /* Stabilize GPU compositing and stacking to prevent disappearing on hover */
+  backface-visibility: hidden;
+  will-change: box-shadow, border-color;
+  isolation: isolate;
+  contain: paint; /* create a new paint containment to avoid overlap glitches */
+  z-index: 1; /* keep card above backgrounds */
 }
 
 .service-card.visible {
@@ -65,24 +91,16 @@
   transform: translateY(0) scale(1);
 }
 
-.service-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  padding: 1px;
-  background: linear-gradient(45deg, rgba(255, 212, 0, 0.2), transparent, rgba(255, 212, 0, 0.1));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
+/* Remove masked gradient ring to avoid browser-specific mask/transform glitches */
+.service-card::before { content: none; }
 
 .service-card:hover {
+  /* Keep hover purely visual; no movement or opacity changes */
   transform: none;
+  opacity: 1;
   border-color: rgba(255, 212, 0, 0.35);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  z-index: 2; /* lift above sibling cards when hovered */
 }
 
 .service-icon {
@@ -105,7 +123,10 @@
 }
 
 /* no icon movement on hover */
-.service-card:hover .service-icon { transform: none; box-shadow: 0 4px 12px rgba(255, 212, 0, 0.25); }
+.service-card:hover .service-icon { 
+  transform: none; 
+  box-shadow: 0 4px 12px rgba(255, 212, 0, 0.25); 
+}
 
 .service-card h3 {
   font-size: 1.25rem;
@@ -150,8 +171,9 @@
 }
 
 .service-card:hover .service-hover-indicator {
+  /* Subtle indicator without affecting layout */
   opacity: 1;
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 
 /* Enhanced carousel dots */
@@ -252,6 +274,7 @@
 .services-carousel-container {
   position: relative;
   padding-inline: 0; /* no gutters since arrows are removed */
+  overflow: visible; /* ensure no clipping around edges */
 }
 
 .services-carousel-container .carousel-control { display: none !important; }

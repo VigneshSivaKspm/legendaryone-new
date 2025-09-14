@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Legendary one Website
 
 This is the official website for Legendary one, empowering connectivity across continents. Built with React, it features:
@@ -56,3 +57,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# legendaryone-new
+>>>>>>> 6d8a487a70d8ab5354cdeb4f4059c5dc3eda4e11
