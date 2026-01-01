@@ -85,6 +85,10 @@ const Navbar = () => {
           </button>
         </div>
 
+        <div className="navbar-center-flag">
+          <img src={process.env.PUBLIC_URL + '/flg.png'} alt="Flag" style={{ height: 40, width: 'auto' }} />
+        </div>
+
         <div className={`navbar-menu ${isOpen ? 'active' : ''}`} ref={dropdownRef}>
           <ul className="navbar-links">
             <li><NavLink to="/">HOME</NavLink></li>
