@@ -99,7 +99,7 @@
   z-index: 10;
   padding: 0;
   box-sizing: border-box;
-  gap: 5px;
+  gap: 6px; /* Small, consistent spacing between elements */
 }
 
 /* Logo Container */
@@ -114,12 +114,13 @@
 
 .hero-logo {
   position: relative;
-  width: 500px;
-  height: 400px;
+  width: 625px;
+  height: 260px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2;
+  margin-bottom: 0; /* Neutral spacing */
 }
 
 .logo-part {
@@ -132,14 +133,14 @@
   opacity: 0;
   object-fit: contain;
   filter: blur(15px);
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
 }
 
 /* Adjust individual logo parts */
-.logo-part.part-1 { width: 180px; height: 180px; }
-.logo-part.part-2 { width: 200px; height: 200px; }
-.logo-part.part-3 { width: 220px; height: 220px; }
+.logo-part.part-1 { width: 225px; height: 225px; }
+.logo-part.part-2 { width: 250px; height: 250px; }
+.logo-part.part-3 { width: 275px; height: 275px; }
 
 /* Main Title */
 .main-title {
@@ -154,8 +155,9 @@
   animation: gradient-animation 3s infinite linear;
   opacity: 0;
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.1;
   text-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
+  margin-top: 0; /* Neutral spacing */
 }
 
 /* Subtitle */
@@ -164,7 +166,7 @@
   font-weight: 300;
   color: rgba(255, 255, 255, 0.8);
   opacity: 0;
-  margin: 5px 0 0 0;
+  margin: 0;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: opacity 0.5s ease-out;
@@ -178,7 +180,7 @@
 /* Animation for text appearance */
 .text-fade-run {
   animation: gradient-animation 3s infinite linear, text-fade 1s ease forwards;
-  min-height: 4.5rem; /* Prevent layout shift */
+  min-height: 0; /* Remove reserved space to reduce gap */
   display: inline-block;
   transition: all 0.5s ease;
 }
@@ -253,18 +255,22 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .hero-logo { 
-    width: 300px; 
-    height: 250px;
+    width: 360px; 
+    height: 220px;
+    margin-bottom: 0;
+  }
+  .main-title {
+    margin-top: 0;
   }
   
   .logo-part {
-    width: 140px;
-    height: 140px;
+    width: 170px;
+    height: 170px;
   }
   
-  .logo-part.part-1 { width: 180px; height: 180px; }
-  .logo-part.part-2 { width: 200px; height: 200px; }
-  .logo-part.part-3 { width: 220px; height: 220px; }
+  .logo-part.part-1 { width: 210px; height: 210px; }
+  .logo-part.part-2 { width: 230px; height: 230px; }
+  .logo-part.part-3 { width: 250px; height: 250px; }
   
   .main-title { 
     font-size: 2.5rem; 
@@ -281,18 +287,22 @@
 
 @media (max-width: 480px) {
   .hero-logo { 
-    width: 250px; 
-    height: 200px;
+    width: 300px; 
+    height: 190px;
+    margin-bottom: 0;
+  }
+  .main-title {
+    margin-top: 0;
   }
   
   .logo-part {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
   }
   
-  .logo-part.part-1 { width: 160px; height: 160px; }
-  .logo-part.part-2 { width: 180px; height: 180px; }
-  .logo-part.part-3 { width: 200px; height: 200px; }
+  .logo-part.part-1 { width: 180px; height: 180px; }
+  .logo-part.part-2 { width: 200px; height: 200px; }
+  .logo-part.part-3 { width: 220px; height: 220px; }
   
   .main-title { 
     font-size: 2rem; 

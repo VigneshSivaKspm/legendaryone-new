@@ -94,7 +94,6 @@ const Home = () => {
           <div className="twinkling" role="presentation"></div>
           <div className="nebula" role="presentation"></div>
           <div className="floating-elements" role="presentation"></div>
-          <div className="satellite" role="presentation"></div>
           <div className="hero-content">
             <div className="hero-content-wrapper">
               {/* Logo Container */}

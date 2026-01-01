@@ -14,224 +14,224 @@ const Technologies = () => {
 
   // Icon map remains the same as in your original code
  // Map technology names to Devicon (and related) colored icons
-  const iconMap = (name) => {
-    // Use @latest to ensure paths match current devicon package
-    const cdn = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
-    const map = {
-      // Frontend
-      'React': `${cdn}/react/react-original.svg`,
-      'Next.js': `${cdn}/nextjs/nextjs-original.svg`,
-      'Angular': `${cdn}/angularjs/angularjs-plain.svg`,
-      'Vue': `${cdn}/vuejs/vuejs-original.svg`,
-      'TypeScript': `${cdn}/typescript/typescript-original.svg`,
-      'JavaScript': `${cdn}/javascript/javascript-original.svg`,
-      'Redux': `${cdn}/redux/redux-original.svg`,
-      'Zustand': null,
-      'Vuex': null,
-      'NgRx': null,
-      'Tailwind CSS': `${cdn}/tailwindcss/tailwindcss-original.svg`,
-      'SCSS': `${cdn}/sass/sass-original.svg`,
-      'Styled Components': `${cdn}/styledcomponents/styledcomponents-plain.svg`,
-      'Vite': `${cdn}/vitejs/vitejs-original.svg`,
-      'Webpack': `${cdn}/webpack/webpack-original.svg`,
-      'Babel': `${cdn}/babel/babel-original.svg`,
+ // Icon map with corrected and updated CDN links
+const iconMap = (name) => {
+  const cdn = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
+  const simpleIconsCdn = 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons';
 
-      // Backend
-      'Node.js': `${cdn}/nodejs/nodejs-original.svg`,
-      'Express': `${cdn}/express/express-original.svg`,
-      'NestJS': `${cdn}/nestjs/nestjs-original.svg`,
-      'Deno': `${cdn}/denojs/denojs-original.svg`,
-      'Python': `${cdn}/python/python-original.svg`,
-      'Django': `${cdn}/django/django-plain.svg`,
-      'FastAPI': `${cdn}/fastapi/fastapi-original.svg`,
-      'Flask': `${cdn}/flask/flask-original.svg`,
-      'Java': `${cdn}/java/java-original.svg`,
-      'Spring Boot': `${cdn}/spring/spring-original.svg`,
-      'Kotlin': `${cdn}/kotlin/kotlin-original.svg`,
-      'Go': `${cdn}/go/go-original.svg`,
-      'Gin': null,
-      'Fiber': null,
-      'Rust': `${cdn}/rust/rust-original.svg`,
-      'Actix': null,
-      'ASP.NET Core': `${cdn}/dotnetcore/dotnetcore-plain.svg`,
-      'REST': null,
-      'GraphQL': `${cdn}/graphql/graphql-plain.svg`,
-      'Apollo': null,
+  const map = {
+    // Frontend
+    'React': `${cdn}/react/react-original.svg`,
+    'Next.js': `${cdn}/nextjs/nextjs-original.svg`,
+    'Angular': `${cdn}/angularjs/angularjs-plain.svg`,
+    'Vue': `${cdn}/vuejs/vuejs-original.svg`,
+    'TypeScript': `${cdn}/typescript/typescript-original.svg`,
+    'JavaScript': `${cdn}/javascript/javascript-original.svg`,
+    'Redux': `${cdn}/redux/redux-original.svg`,
+    'Zustand': `${simpleIconsCdn}/zustand.svg`, // Simple Icons
+    'Vuex': `${cdn}/vuex/vuex-original.svg`,
+    'NgRx': `${simpleIconsCdn}/ngrx.svg`, // Simple Icons
+    'Tailwind CSS': `${cdn}/tailwindcss/tailwindcss-original.svg`,
+    'SCSS': `${cdn}/sass/sass-original.svg`,
+    'Styled Components': `${cdn}/styledcomponents/styledcomponents-plain.svg`,
+    'Vite': `${cdn}/vitejs/vitejs-original.svg`,
+    'Webpack': `${cdn}/webpack/webpack-original.svg`,
+    'Babel': `${cdn}/babel/babel-original.svg`,
 
-      // Mobile
-      'React Native': `${cdn}/react/react-original.svg`,
-      'Flutter': `${cdn}/flutter/flutter-original.svg`,
-      'Android (Kotlin)': `${cdn}/android/android-plain.svg`,
-      'iOS (Swift)': `${cdn}/swift/swift-original.svg`,
-      'Ionic': `${cdn}/ionic/ionic-original.svg`,
-      'Capacitor': null,
+    // Backend
+    'Node.js': `${cdn}/nodejs/nodejs-original.svg`,
+    'Express': `${cdn}/express/express-original-wordmark.svg`,
+    'NestJS': `${cdn}/nestjs/nestjs-plain.svg`,
+    'Deno': `${cdn}/denojs/denojs-original.svg`,
+    'Python': `${cdn}/python/python-original.svg`,
+    'Django': `${cdn}/django/django-plain.svg`,
+    'FastAPI': `${simpleIconsCdn}/fastapi.svg`, // Simple Icons
+    'Flask': `${cdn}/flask/flask-original.svg`,
+    'Java': `${cdn}/java/java-original.svg`,
+    'Spring Boot': `${cdn}/spring/spring-original.svg`,
+    'Kotlin': `${cdn}/kotlin/kotlin-original.svg`,
+    'Go': `${cdn}/go/go-original.svg`,
+    'Gin': `${simpleIconsCdn}/gin.svg`, // Simple Icons
+    'Fiber': `${simpleIconsCdn}/gofiber.svg`, // Simple Icons
+    'Rust': `${cdn}/rust/rust-original.svg`,
+    'Actix': `${simpleIconsCdn}/actix.svg`, // Simple Icons
+    'ASP.NET Core': `${cdn}/dotnetcore/dotnetcore-plain.svg`,
+    'REST': null, // Concept, no icon
+    'GraphQL': `${cdn}/graphql/graphql-plain.svg`,
+    'Apollo': `${simpleIconsCdn}/apollographql.svg`, // Simple Icons
 
-      // Databases
-      'PostgreSQL': `${cdn}/postgresql/postgresql-original.svg`,
-      'MySQL': `${cdn}/mysql/mysql-original.svg`,
-      'MariaDB': `${cdn}/mariadb/mariadb-original.svg`,
-      'MongoDB': `${cdn}/mongodb/mongodb-original.svg`,
-      'CouchDB': `${cdn}/couchdb/couchdb-original.svg`,
-      'Redis': `${cdn}/redis/redis-original.svg`,
-      'Memcached': null,
-      'Elasticsearch': `${cdn}/elasticsearch/elasticsearch-plain.svg`,
-      'OpenSearch': null,
-      'Snowflake': `${cdn}/snowflake/snowflake-plain.svg`,
-      'BigQuery': `${cdn}/googlecloud/googlecloud-original.svg`,
-      'Redshift': `${cdn}/amazonwebservices/amazonwebservices-original.svg`,
+    // Mobile
+    'React Native': `${cdn}/react/react-original.svg`,
+    'Flutter': `${cdn}/flutter/flutter-original.svg`,
+    'Android (Kotlin)': `${cdn}/android/android-plain.svg`,
+    'iOS (Swift)': `${cdn}/swift/swift-original.svg`,
+    'Ionic': `${cdn}/ionic/ionic-original.svg`,
+    'Capacitor': `${simpleIconsCdn}/capacitor.svg`, // Simple Icons
 
-      // BaaS & Serverless
-      'Firebase': `${cdn}/firebase/firebase-plain.svg`,
-      'Supabase': `${cdn}/supabase/supabase-original.svg`,
-      'Appwrite': `${cdn}/appwrite/appwrite-original.svg`,
-      'AWS Amplify': `${cdn}/awsamplify/awsamplify-plain.svg`,
-      'Auth0': `${cdn}/auth0/auth0-original.svg`,
+    // Databases
+    'PostgreSQL': `${cdn}/postgresql/postgresql-original.svg`,
+    'MySQL': `${cdn}/mysql/mysql-original.svg`,
+    'MariaDB': `${cdn}/mariadb/mariadb-original.svg`,
+    'MongoDB': `${cdn}/mongodb/mongodb-original.svg`,
+    'CouchDB': `${cdn}/couchdb/couchdb-original.svg`,
+    'Redis': `${cdn}/redis/redis-original.svg`,
+    'Memcached': `${simpleIconsCdn}/memcached.svg`, // Simple Icons
+    'Elasticsearch': `${cdn}/elasticsearch/elasticsearch-plain.svg`,
+    'OpenSearch': `${simpleIconsCdn}/opensearch.svg`, // Simple Icons
+    'Snowflake': `${simpleIconsCdn}/snowflake.svg`, // Simple Icons
+    'BigQuery': `${simpleIconsCdn}/googlebigquery.svg`, // Simple Icons
+    'Redshift': `${simpleIconsCdn}/amazonredshift.svg`, // Simple Icons
 
-      // Data & Streaming
-      'Apache Kafka': `${cdn}/apachekafka/apachekafka-original.svg`,
-      'RabbitMQ': `${cdn}/rabbitmq/rabbitmq-original.svg`,
-      'Apache Spark': `${cdn}/apachespark/apachespark-original.svg`,
-      // Devicon uses 'apacheflink' slug
-      'Flink': `${cdn}/apacheflink/apacheflink-original.svg`,
-      'Airflow': `${cdn}/apacheairflow/apacheairflow-original.svg`,
-      'dbt': `${cdn}/dbt/dbt-original.svg`,
-      'TimescaleDB': null,
-      'ClickHouse': `${cdn}/clickhouse/clickhouse-original.svg`,
+    // BaaS & Serverless
+    'Firebase': `${cdn}/firebase/firebase-plain.svg`,
+    'Supabase': `${cdn}/supabase/supabase-original.svg`,
+    'Appwrite': `${simpleIconsCdn}/appwrite.svg`, // Simple Icons
+    'AWS Amplify': `${simpleIconsCdn}/awslambda.svg`, // Simple Icons for general serverless
+    'Auth0': `${simpleIconsCdn}/auth0.svg`, // Simple Icons
 
-      // DevOps & CI/CD
-      'Docker': `${cdn}/docker/docker-original.svg`,
-      'Kubernetes': `${cdn}/kubernetes/kubernetes-plain.svg`,
-      'GitHub Actions': `${cdn}/githubactions/githubactions-plain.svg`,
-      'GitLab CI': `${cdn}/gitlab/gitlab-plain.svg`,
-      'Jenkins': `${cdn}/jenkins/jenkins-original.svg`,
-      'Argo CD': null,
-      'Helm': `${cdn}/helm/helm-original.svg`,
-      'Kustomize': null,
-      'Nginx': `${cdn}/nginx/nginx-original.svg`,
-      'Traefik': `${cdn}/traefikproxy/traefikproxy-original.svg`,
-      'HAProxy': null,
+    // Data & Streaming
+    'Apache Kafka': `${cdn}/apachekafka/apachekafka-original.svg`,
+    'RabbitMQ': `${cdn}/rabbitmq/rabbitmq-original.svg`,
+    'Apache Spark': `${cdn}/apachespark/apachespark-original.svg`,
+    'Flink': `${simpleIconsCdn}/apacheflink.svg`, // Simple Icons
+    'Airflow': `${cdn}/apacheairflow/apacheairflow-original.svg`,
+    'dbt': `${simpleIconsCdn}/dbt.svg`, // Simple Icons
+    'TimescaleDB': `${simpleIconsCdn}/timescaledb.svg`, // Simple Icons
+    'ClickHouse': `${cdn}/clickhouse/clickhouse-original.svg`,
 
-      // Cloud & Infra
-      'AWS': `${cdn}/amazonwebservices/amazonwebservices-original.svg`,
-      'Azure': `${cdn}/azure/azure-original.svg`,
-      'GCP': `${cdn}/googlecloud/googlecloud-original.svg`,
-      'Serverless Functions': `${cdn}/serverless/serverless-original.svg`,
-      'CDN': `${cdn}/cloudflare/cloudflare-original.svg`,
-      'DNS': null,
-      'Load Balancing': null,
-      'Terraform': `${cdn}/terraform/terraform-original.svg`,
-      'Pulumi': `${cdn}/pulumi/pulumi-plain.svg`,
-      'Ansible': `${cdn}/ansible/ansible-original.svg`,
+    // DevOps & CI/CD
+    'Docker': `${cdn}/docker/docker-original.svg`,
+    'Kubernetes': `${cdn}/kubernetes/kubernetes-plain.svg`,
+    'GitHub Actions': `${simpleIconsCdn}/githubactions.svg`, // Simple Icons
+    'GitLab CI': `${cdn}/gitlab/gitlab-plain.svg`,
+    'Jenkins': `${cdn}/jenkins/jenkins-original.svg`,
+    'Argo CD': `${simpleIconsCdn}/argocd.svg`, // Simple Icons
+    'Helm': `${cdn}/helm/helm-original.svg`,
+    'Kustomize': `${simpleIconsCdn}/kustomize.svg`, // Simple Icons
+    'Nginx': `${cdn}/nginx/nginx-original.svg`,
+    'Traefik': `${cdn}/traefikproxy/traefikproxy-original.svg`,
+    'HAProxy': `${simpleIconsCdn}/haproxy.svg`, // Simple Icons
 
-      // Testing & QA
-      'Jest': `${cdn}/jest/jest-plain.svg`,
-      'Vitest': null,
-      'Mocha': `${cdn}/mocha/mocha-plain.svg`,
-      'Cypress': `${cdn}/cypressio/cypressio-plain.svg`,
-      'Playwright': `${cdn}/playwright/playwright-original.svg`,
-      'Selenium': `${cdn}/selenium/selenium-original.svg`,
-      'Testing Library': null,
-      'Pact': null,
-      'Postman': `${cdn}/postman/postman-plain.svg`,
-      'Newman': `${cdn}/postman/postman-plain.svg`,
-      'k6': `${cdn}/k6/k6-original.svg`,
+    // Cloud & Infrastructure
+    'AWS': `${cdn}/amazonwebservices/amazonwebservices-original.svg`,
+    'Azure': `${cdn}/azure/azure-original.svg`,
+    'GCP': `${cdn}/googlecloud/googlecloud-original.svg`,
+    'Serverless Functions': `${simpleIconsCdn}/awslambda.svg`, // Simple Icons
+    'CDN': null, // Concept, no icon
+    'DNS': null, // Concept, no icon
+    'Load Balancing': null, // Concept, no icon
+    'Terraform': `${cdn}/terraform/terraform-original.svg`,
+    'Pulumi': `${cdn}/pulumi/pulumi-plain.svg`,
+    'Ansible': `${cdn}/ansible/ansible-original.svg`,
 
-      // Observability
-      'Prometheus': `${cdn}/prometheus/prometheus-original.svg`,
-      'Grafana': `${cdn}/grafana/grafana-original.svg`,
-      'Fluentd': `${cdn}/fluentd/fluentd-original.svg`,
-      'Kibana': `${cdn}/kibana/kibana-original.svg`,
-      'OpenTelemetry': null,
-      'Jaeger': `${cdn}/jaegertracing/jaegertracing-original.svg`,
-      'Sentry': `${cdn}/sentry/sentry-original.svg`,
-      'Datadog': `${cdn}/datadog/datadog-original.svg`,
-      'New Relic': `${cdn}/newrelic/newrelic-original.svg`,
+    // Testing & QA
+    'Jest': `${cdn}/jest/jest-plain.svg`,
+    'Vitest': `${simpleIconsCdn}/vitest.svg`, // Simple Icons
+    'Mocha': `${cdn}/mocha/mocha-plain.svg`,
+    'Cypress': `${cdn}/cypressio/cypressio-plain.svg`,
+    'Playwright': `${cdn}/playwright/playwright-original.svg`,
+    'Selenium': `${cdn}/selenium/selenium-original.svg`,
+    'Testing Library': `${simpleIconsCdn}/testinglibrary.svg`, // Simple Icons
+    'Pact': `${simpleIconsCdn}/pact.svg`, // Simple Icons
+    'Postman': `${cdn}/postman/postman-plain.svg`,
+    'Newman': null, // Part of Postman, no dedicated icon
+    'k6': `${simpleIconsCdn}/k6.svg`, // Simple Icons
 
-      // Security
-      'OAuth 2.0': null,
-      'OIDC': null,
-      'JWT': null,
-      'OWASP ASVS': null,
-      'ZAP': null,
-      'Snyk': `${cdn}/snyk/snyk-original.svg`,
-      'HashiCorp Vault': `${cdn}/vault/vault-original.svg`,
-      'KMS': null,
-      'mTLS': null,
-      'WAF': null,
-      'CSP': null,
+    // Observability
+    'Prometheus': `${cdn}/prometheus/prometheus-original.svg`,
+    'Grafana': `${cdn}/grafana/grafana-original.svg`,
+    'Fluentd': `${simpleIconsCdn}/fluentd.svg`, // Simple Icons
+    'Kibana': `${cdn}/kibana/kibana-original.svg`,
+    'OpenTelemetry': `${simpleIconsCdn}/opentelemetry.svg`, // Simple Icons
+    'Jaeger': `${cdn}/jaegertracing/jaegertracing-original.svg`,
+    'Sentry': `${cdn}/sentry/sentry-original.svg`,
+    'Datadog': `${cdn}/datadog/datadog-original.svg`,
+    'New Relic': `${cdn}/newrelic/newrelic-original.svg`,
 
-      // AI/ML & Analytics
-      'Pandas': `${cdn}/pandas/pandas-original.svg`,
-      'NumPy': `${cdn}/numpy/numpy-original.svg`,
-      'Scikit-learn': `${cdn}/scikitlearn/scikitlearn-original.svg`,
-      'TensorFlow': `${cdn}/tensorflow/tensorflow-original.svg`,
-      'PyTorch': `${cdn}/pytorch/pytorch-original.svg`,
-      'MLflow': `${cdn}/mlflow/mlflow-original.svg`,
-      'SageMaker': `${cdn}/amazonwebservices/amazonwebservices-original.svg`,
-      'Vertex AI': `${cdn}/googlecloud/googlecloud-original.svg`,
-      'Tableau': `${cdn}/tableau/tableau-original.svg`,
-      'Power BI': `${cdn}/powerbi/powerbi-original.svg`,
-      'Superset': null,
+    // Security
+    'OAuth 2.0': null, // Protocol, no icon
+    'OIDC': null, // Protocol, no icon
+    'JWT': null, // Standard, no icon
+    'OWASP ASVS': null, // Standard, no icon
+    'ZAP': `${simpleIconsCdn}/owasp.svg`, // Using OWASP icon as ZAP is a project
+    'Snyk': `${simpleIconsCdn}/snyk.svg`, // Simple Icons
+    'HashiCorp Vault': `${cdn}/vault/vault-original.svg`,
+    'KMS': null, // Concept, no icon
+    'mTLS': null, // Concept, no icon
+    'WAF': null, // Concept, no icon
+    'CSP': null, // Concept, no icon
 
-      // APIs & Integrations
-      'OpenAPI/Swagger': `${cdn}/swagger/swagger-original.svg`,
-      'gRPC': null,
-      'WebSockets': null,
-      'SSE': null,
-      'Stripe': `${cdn}/stripe/stripe-original.svg`,
-      'PayPal': `${cdn}/paypal/paypal-original.svg`,
+    // AI/ML & Analytics
+    'Pandas': `${cdn}/pandas/pandas-original.svg`,
+    'NumPy': `${cdn}/numpy/numpy-original.svg`,
+    'Scikit-learn': `${cdn}/scikitlearn/scikitlearn-original.svg`,
+    'TensorFlow': `${cdn}/tensorflow/tensorflow-original.svg`,
+    'PyTorch': `${cdn}/pytorch/pytorch-original.svg`,
+    'MLflow': `${simpleIconsCdn}/mlflow.svg`, // Simple Icons
+    'SageMaker': `${simpleIconsCdn}/amazon.svg`, // General AWS icon
+    'Vertex AI': `${simpleIconsCdn}/google.svg`, // General Google Cloud icon
+    'Tableau': `${simpleIconsCdn}/tableau.svg`, // Simple Icons
+    'Power BI': `${simpleIconsCdn}/powerbi.svg`, // Simple Icons
+    'Superset': `${simpleIconsCdn}/apache.svg`, // General Apache icon
 
-      // Caching & Performance
-      'CloudFront': `${cdn}/amazonwebservices/amazonwebservices-original.svg`,
-      'Cloudflare': `${cdn}/cloudflare/cloudflare-original.svg`,
-      'Edge Functions': `${cdn}/cloudflare/cloudflare-original.svg`,
-      'Workers': `${cdn}/cloudflare/cloudflare-original.svg`,
+    // APIs & Integrations
+    'OpenAPI/Swagger': `${cdn}/swagger/swagger-original.svg`,
+    'gRPC': `${simpleIconsCdn}/grpc.svg`, // Simple Icons
+    'WebSockets': null, // Protocol, no icon
+    'SSE': null, // Protocol, no icon
+    'Stripe': `${cdn}/stripe/stripe-original.svg`,
+    'PayPal': `${cdn}/paypal/paypal-original.svg`,
 
-      // IaC
-      'Crossplane': null,
-      'AWS CDK': `${cdn}/amazonwebservices/amazonwebservices-original.svg`,
+    // Caching & Performance
+    'CloudFront': `${simpleIconsCdn}/amazonaws.svg`, // AWS icon
+    'Cloudflare': `${cdn}/cloudflare/cloudflare-original.svg`,
+    'Edge Functions': null, // Concept, no icon
+    'Workers': `${simpleIconsCdn}/cloudflareworkers.svg`, // Simple Icons
 
-      // CMS & E‑commerce
-      'WordPress': `${cdn}/wordpress/wordpress-plain.svg`,
-      'Strapi': `${cdn}/strapi/strapi-original.svg`,
-      'Sanity': null,
-      'Shopify': `${cdn}/shopify/shopify-original.svg`,
-      'Magento': `${cdn}/magento/magento-original.svg`,
-      'WooCommerce': null,
-      'Contentful': `${cdn}/contentful/contentful-original.svg`,
-      'Ghost': `${cdn}/ghost/ghost-original.svg`,
+    // IaC
+    'Crossplane': `${simpleIconsCdn}/crossplane.svg`, // Simple Icons
+    'AWS CDK': `${simpleIconsCdn}/awscdk.svg`, // Simple Icons
 
-      // Collaboration & PM
-      'Jira': `${cdn}/jira/jira-original.svg`,
-      'Linear': null,
-      'Trello': `${cdn}/trello/trello-plain.svg`,
-      'Confluence': `${cdn}/confluence/confluence-original.svg`,
-      'Notion': `${cdn}/notion/notion-original.svg`,
-      'Slack': `${cdn}/slack/slack-original.svg`,
-      'Microsoft Teams': `${cdn}/microsoft/microsoft-original.svg`,
+    // CMS & E‑commerce
+    'WordPress': `${cdn}/wordpress/wordpress-plain.svg`,
+    'Strapi': `${cdn}/strapi/strapi-original.svg`,
+    'Sanity': `${simpleIconsCdn}/sanity.svg`, // Simple Icons
+    'Shopify': `${cdn}/shopify/shopify-original.svg`,
+    'Magento': `${cdn}/magento/magento-original.svg`,
+    'WooCommerce': `${simpleIconsCdn}/woocommerce.svg`, // Simple Icons
+    'Contentful': `${cdn}/contentful/contentful-original.svg`,
+    'Ghost': `${cdn}/ghost/ghost-original.svg`,
 
-      // Design & Prototyping
-      'Figma': `${cdn}/figma/figma-original.svg`,
-      'Adobe XD': `${cdn}/xd/xd-plain.svg`,
-      'Storybook': `${cdn}/storybook/storybook-original.svg`,
-      'Zeplin': null,
-      'Lottie': null,
-      'SVG': null,
+    // Collaboration & PM
+    'Jira': `${cdn}/jira/jira-original.svg`,
+    'Linear': `${simpleIconsCdn}/linear.svg`, // Simple Icons
+    'Trello': `${cdn}/trello/trello-plain.svg`,
+    'Confluence': `${cdn}/confluence/confluence-original.svg`,
+    'Notion': `${cdn}/notion/notion-original.svg`,
+    'Slack': `${cdn}/slack/slack-original.svg`,
+    'Microsoft Teams': `${simpleIconsCdn}/microsoftteams.svg`, // Simple Icons
 
-      // Version control & quality
-      'Git': `${cdn}/git/git-original.svg`,
-      'GitHub': `${cdn}/github/github-original.svg`,
-      'GitLab': `${cdn}/gitlab/gitlab-plain.svg`,
-      'Bitbucket': `${cdn}/bitbucket/bitbucket-original.svg`,
-      'Conventional Commits': null,
-      'Semantic Release': null,
-      'ESLint': `${cdn}/eslint/eslint-original.svg`,
-      'Prettier': `${cdn}/prettier/prettier-original.svg`,
-      'SonarQube': `${cdn}/sonarqube/sonarqube-original.svg`,
-    };
-    return map[name] || null;
+    // Design & Prototyping
+    'Figma': `${cdn}/figma/figma-original.svg`,
+    'Adobe XD': `${cdn}/xd/xd-plain.svg`,
+    'Storybook': `${cdn}/storybook/storybook-original.svg`,
+    'Zeplin': `${simpleIconsCdn}/zeplin.svg`, // Simple Icons
+    'Lottie': `${simpleIconsCdn}/lottie.svg`, // Simple Icons
+    'SVG': null, // Format, no icon
+
+    // Version Control & Quality
+    'Git': `${cdn}/git/git-original.svg`,
+    'GitHub': `${cdn}/github/github-original.svg`,
+    'GitLab': `${cdn}/gitlab/gitlab-plain.svg`,
+    'Bitbucket': `${cdn}/bitbucket/bitbucket-original.svg`,
+    'Conventional Commits': null, // Standard, no icon
+    'Semantic Release': `${simpleIconsCdn}/semanticrelease.svg`, // Simple Icons
+    'ESLint': `${cdn}/eslint/eslint-original.svg`,
+    'Prettier': `${cdn}/prettier/prettier-original.svg`,
+    'SonarQube': `${cdn}/sonarqube/sonarqube-original.svg`,
   };
-
+  return map[name] || null;
+};
   const categories = [
     {
       title: 'Frontend',
@@ -411,12 +411,84 @@ const Technologies = () => {
                                     src={src}
                                     alt={name}
                                     loading="lazy"
+                                    crossOrigin="anonymous"
+                                    referrerPolicy="no-referrer"
                                     onError={(e) => {
-                                      console.error('[Tech Icon Load Error]', name, '->', src);
-                                      e.currentTarget.style.display = 'none';
-                                      const parent = e.currentTarget.parentElement;
+                                      // Progressive fallback: try alternate CDN and variant before placeholder
+                                      const img = e.currentTarget;
+                                      const tried = parseInt(img.getAttribute('data-try') || '0', 10);
+                                      const url = img.src;
+                                      let nextUrl = null;
+                                      if (tried === 0) {
+                                        // Try without @latest
+                                        nextUrl = url.replace('/devicon@latest/', '/devicon/');
+                                      } else if (tried === 1) {
+                                        // Swap -original <-> -plain
+                                        if (url.endsWith('-original.svg')) {
+                                          nextUrl = url.replace('-original.svg', '-plain.svg');
+                                        } else if (url.endsWith('-plain.svg')) {
+                                          nextUrl = url.replace('-plain.svg', '-original.svg');
+                                        }
+                                      } else if (tried === 2) {
+                                        // Try Simple Icons CDN for brands that may not exist in Devicon
+                                        const siSlugMap = {
+                                          'Snowflake': 'snowflake',
+                                          'Auth0': 'auth0',
+                                          'Appwrite': 'appwrite',
+                                          'AWS Amplify': 'awsamplify',
+                                          'Flink': 'apacheflink',
+                                          'dbt': 'dbt',
+                                          'Serverless Functions': 'serverless',
+                                          'Fluentd': 'fluentd',
+                                          'Snyk': 'snyk',
+                                          'MLflow': 'mlflow',
+                                          'Power BI': 'powerbi',
+                                          'Tableau': 'tableau',
+                                          'Stripe': 'stripe',
+                                          'PayPal': 'paypal',
+                                          'Contentful': 'contentful',
+                                          'Strapi': 'strapi',
+                                          'Shopify': 'shopify',
+                                          'Microsoft Teams': 'microsoftteams',
+                                          'AWS': 'amazonaws',
+                                          'AWS CDK': 'amazonaws',
+                                          'CloudFront': 'amazonaws',
+                                          'Redshift': 'amazonredshift',
+                                          'SageMaker': 'amazonsagemaker',
+                                          'Prettier': 'prettier'
+                                        };
+                                        const siSlug = siSlugMap[name];
+                                        if (siSlug) {
+                                          nextUrl = `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${siSlug}.svg`;
+                                        }
+                                      } else if (tried === 3) {
+                                        // Fallback: unpkg for Simple Icons
+                                        const siSlugFallback = img.getAttribute('data-si-slug');
+                                        if (siSlugFallback) {
+                                          nextUrl = `https://unpkg.com/simple-icons@latest/icons/${siSlugFallback}.svg`;
+                                        }
+                                      } else if (tried === 4) {
+                                        // Last resort: devicon via npm jsdelivr path (without @latest)
+                                        nextUrl = url.replace('gh/devicons/devicon@latest/icons', 'npm/devicon/icons');
+                                      }
+                                      if (nextUrl && nextUrl !== url) {
+                                        img.setAttribute('data-try', String(tried + 1));
+                                        // remember simple-icons slug if used
+                                        const m = nextUrl.match(/icons\/([a-z0-9-]+)\.svg$/i);
+                                        if (m) {
+                                          img.setAttribute('data-si-slug', m[1]);
+                                        }
+                                        img.src = nextUrl;
+                                        return;
+                                      }
+                                      // Give up -> placeholder (log only in development)
+                                      if (process.env.NODE_ENV === 'development') {
+                                        // eslint-disable-next-line no-console
+                                        console.error('[Tech Icon Load Error]', name, '->', url);
+                                      }
+                                      img.style.display = 'none';
+                                      const parent = img.parentElement;
                                       if (parent) {
-                                        // show placeholder if load fails
                                         const ph = document.createElement('span');
                                         ph.className = 'tech-icon-placeholder';
                                         parent.appendChild(ph);

@@ -11,47 +11,212 @@ const Projects = () => {
     AOS.refresh();
   }, []);
 
+  const categories = ['All', 'Websites', 'Softwares', 'Android Apps'];
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const projects = [
+    {
+      year: '2025',
+      title: 'KALI TRADERS',
+      description: 'Professional website for a trusted tile solutions provider specializing in tile pastes, grout, epoxy, and beeding solutions with product showcase and contact features.',
+      categories: ['Websites'],
+      projectLink: 'https://kalitraders.in/',
+      image: '/projects/kalitraders.png',
+      tech: ['React', 'HTML', 'CSS', 'JavaScript'],
+      status: 'Live'
+    },
+    {
+      year: '2025',
+      title: 'TrainArch',
+      description: 'Revolutionary AI-powered fitness platform connecting users with certified trainers. Features AI nutrition tracking, step monitoring, hydration reminders, personalized training, sleep tracking, and gamified rewards system.',
+      categories: ['Websites'],
+      projectLink: 'https://trainarch.in/',
+      image: '/projects/trainarch.png',
+      tech: ['React', 'AI', 'Node.js', 'MongoDB'],
+      status: 'Live'
+    },
+    {
+      year: '2025',
+      title: 'PaviiSunn',
+      description: 'Leading solar power solutions provider with 15+ years of experience. Offers end-to-end EPC services for rooftop solar photovoltaic projects with government subsidies, maintenance support, and international standards.',
+      categories: ['Websites'],
+      projectLink: 'https://paviisunn.in/',
+      image: '/projects/paviisunn.png',
+      tech: ['React', 'HTML', 'CSS', 'JavaScript'],
+      status: 'Live'
+    },
+    {
+      year: '2025',
+      title: 'Shivaa Engineering Works',
+      description: 'Manufacturer of high-quality solar structures for solar parks, on/off-grid systems, solar street lights, and solar pumping systems. Provides customized, ground-mounted, and rooftop solar structures with innovative designs.',
+      categories: ['Websites'],
+      projectLink: 'https://shivaaengineering.com/',
+      image: '/projects/shivaaeng.png',
+      tech: ['React', 'HTML', 'CSS', 'JavaScript'],
+      status: 'Live'
+    },
+    {
+      year: '2025',
+      title: 'Primetel Solutions',
+      description: 'Telecom software specialists redefining telecommunications infrastructure through custom OSS/BSS platforms, network monitoring, data analytics, AI/ML automation, and cloud-native solutions for MNOs, ISPs, and MVNOs.',
+      categories: ['Websites'],
+      projectLink: 'https://www.primetels.com/',
+      image: '/projects/primetels.png',
+      tech: ['Python', 'Go', 'Java', 'Kubernetes', 'AWS', 'Apache Kafka'],
+      status: 'Live'
+    },
+    {
+      year: '2023',
+      title: 'Royal Photography',
+      description: 'Professional photography studio specializing in wedding, pre-wedding, events, fashion, portrait, and commercial photography. Offers cinematic films, albums, and professional equipment services with multiple branches across Palakkad.',
+      categories: ['Websites'],
+      projectLink: 'https://www.royalphotography.org/',
+      image: '/projects/royal.png',
+      tech: ['React', 'HTML', 'CSS', 'JavaScript'],
+      status: 'Live'
+    },
+    {
+      year: '2025',
+      title: 'Sri Amman Smart Store',
+      description: 'Trusted destination for fresh, organic, and local products. Delivers quality groceries, dairy, and more right to your doorstep with a mission to make healthy living easy and accessible for everyone.',
+      categories: ['Websites'],
+      projectLink: 'https://www.sriammansmartstore.in/',
+      image: '/projects/sriamman.png',
+      tech: ['React', 'HTML', 'CSS', 'JavaScript'],
+      status: 'Live'
+    },
+    {
+      year: '2025',
+      title: 'Spark Learning Hub',
+      description: 'Expert tuition center offering personalized coaching for CBSE, ICSE, JEE, NEET, and CET exams. Features highly qualified faculty, small batch sizes, proven results with 95% success rate, and flexible scheduling options.',
+      categories: ['Websites'],
+      projectLink: 'https://www.sparktuitions.in/',
+      image: '/projects/sparktuition.png',
+      tech: ['React', 'HTML', 'CSS', 'JavaScript'],
+      status: 'Live'
+    },
+    {
+      year: '2024',
+      title: 'The Spark Books',
+      description: 'Literary platform showcasing award-winning author with 25+ published works spanning fiction, poetry, and philosophy. Features book collections, writing workshops, manuscript consultations, book club visits, and literary mentorship programs with strong digital community engagement.',
+      categories: ['Websites'],
+      projectLink: 'https://www.thesparkbooks.com/',
+      image: '/projects/sparkbooks.png',
+      tech: ['React', 'HTML', 'CSS', 'JavaScript'],
+      status: 'Live'
+    },
+    {
+      year: '2026',
+      title: 'Spark Writers Retreat',
+      description: 'Premier writers retreat in the Himalayas offering 7-day immersive experience with award-winning mentors. Provides manuscript development, publishing guidance, free ISBN, luxury accommodation, and personalized mentorship for aspiring and established authors.',
+      categories: ['Websites'],
+      projectLink: 'https://www.sparkwritersretreat.com/',
+      image: '/projects/sparkwriters.png',
+      tech: ['React', 'HTML', 'CSS', 'JavaScript'],
+      status: 'Live'
+    },
+    {
+      year: '2025',
+      title: 'Niklaus Solutions',
+      description: 'Industry-oriented training platform offering 50+ workshops in ethical hacking, full stack development, AI/ML, cybersecurity, and cloud computing. Features hands-on training, industry expert mentors, job placement assistance, guaranteed internships, and industry-recognized certifications.',
+      categories: ['Websites'],
+      projectLink: 'https://www.theniklaus.com/',
+      image: '/projects/theniklaus.png',
+      tech: ['React', 'HTML', 'CSS', 'JavaScript', 'Firebase'],
+      status: 'Live'
+    },
+    {
+      year: '2025',
+      title: 'Velvet Luxury Salon',
+      description: 'Premium salon services platform offering online booking for hair services, facials, body treatments, grooming, and wellness therapies. Features expert stylists with 10+ years experience, premium international products, and exclusive membership offers.',
+      categories: ['Websites'],
+      projectLink: 'https://www.velvetluxurysalon.in/',
+      image: '/projects/velvetluxurysalon.png',
+      tech: ['React', 'HTML', 'CSS', 'JavaScript'],
+      status: 'Live'
+    },
+  ];
+
+  const filteredProjects = selectedCategory === 'All'
+    ? projects
+    : projects.filter(p => p.categories.includes(selectedCategory));
+
   return (
     <>
       <Helmet>
         <link rel="canonical" href="https://primetelsolutionsfze.com/projects" />
       </Helmet>
-      <section className="section projects-section" id="projects" aria-labelledby="projects-heading">
-        <div className="diagonal-bg" data-aos="fade-in" data-aos-delay="100" role="presentation"></div>
+      <section className="section projects-section" id="projects">
         <div className="section-content">
           <header className="section-header" data-aos="fade-up">
-            <h1 className="section-heading" id="projects-heading" data-aos="fade-right" data-aos-delay="100">Our <span className="highlight">Projects</span></h1>
-            <p className="section-subtitle" data-aos="fade-left" data-aos-delay="200">Innovative solutions transforming telecom operations</p>
+            <h1 className="section-heading">
+              Our <span className="highlight">Projects</span>
+            </h1>
+            <p className="section-subtitle">
+              Explore our portfolio of innovative solutions across web, mobile, and software development.
+            </p>
+            
+            <div className="project-categories">
+              {categories.map(cat => (
+                <button
+                  key={cat}
+                  className={`category-btn ${selectedCategory === cat ? 'selected' : ''}`}
+                  onClick={() => setSelectedCategory(cat)}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </header>
-          <div className="timeline" role="list" aria-label="Project Timeline">
-            <article className="timeline-item" data-aos="fade-up" data-aos-delay="100" role="listitem">
-              <div className="timeline-content">
-                <div className="timeline-date" data-aos="zoom-in" data-aos-delay="150" aria-hidden="true">2023</div>
-                <h3 data-aos="fade-right" data-aos-delay="200">Real-time Call Quality Monitoring</h3>
-                <p data-aos="fade-left" data-aos-delay="250">For a leading MNO in Central Europe, reducing complaints by 40% with AI-driven analysis of 2M+ calls daily.</p>
+
+          <div className="projects-grid">
+            {filteredProjects.length === 0 ? (
+              <div className="no-projects" data-aos="fade-up">
+                <span className="no-projects-icon">📂</span>
+                <h3>No Projects Found</h3>
+                <p>We're working on something amazing for this category!</p>
               </div>
-            </article>
-            <article className="timeline-item" data-aos="fade-up" data-aos-delay="200" role="listitem">
-              <div className="timeline-content">
-                <div className="timeline-date" data-aos="zoom-in" data-aos-delay="250" aria-hidden="true">2022</div>
-                <h3 data-aos="fade-right" data-aos-delay="300">Churn Prediction Engine</h3>
-                <p data-aos="fade-left" data-aos-delay="350">Machine learning solution for Tier-2 operator achieving 85% accuracy in identifying at-risk customers.</p>
-              </div>
-            </article>
-            <article className="timeline-item" data-aos="fade-up" data-aos-delay="300" role="listitem">
-              <div className="timeline-content">
-                <div className="timeline-date" data-aos="zoom-in" data-aos-delay="350" aria-hidden="true">2021</div>
-                <h3 data-aos="fade-right" data-aos-delay="400">Billing Fraud Detection</h3>
-                <p data-aos="fade-left" data-aos-delay="450">Cloud-native system saving $2M annually by identifying fraudulent patterns in real-time.</p>
-              </div>
-            </article>
-            <article className="timeline-item" data-aos="fade-up" data-aos-delay="400" role="listitem">
-              <div className="timeline-content">
-                <div className="timeline-date" data-aos="zoom-in" data-aos-delay="450" aria-hidden="true">2020</div>
-                <h3 data-aos="fade-right" data-aos-delay="500">Network Congestion Heatmaps</h3>
-                <p data-aos="fade-left" data-aos-delay="550">GIS-integrated system improving network efficiency by 30% through predictive modeling.</p>
-              </div>
-            </article>
+            ) : (
+              filteredProjects.map((project, idx) => (
+                <article
+                  className="project-card"
+                  data-aos="fade-up"
+                  data-aos-delay={idx * 50}
+                  key={project.title + project.year}
+                >
+                  <div className="card-header">
+                    <span className="year-badge">{project.year}</span>
+                    <span className={`status-badge ${project.status.toLowerCase().replace(' ', '-')}`}>
+                      {project.status}
+                    </span>
+                  </div>
+                  
+                  {project.image && (
+                    <img src={project.image} alt={project.title} className="project-image" />
+                  )}
+                  
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  
+                  <div className="tech-stack">
+                    {project.tech.map(tech => (
+                      <span key={tech} className="tech-tag">{tech}</span>
+                    ))}
+                  </div>
+
+                  {project.projectLink && (
+                    <a 
+                      href={project.projectLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="project-link"
+                    >
+                      View Project <span className="arrow">→</span>
+                    </a>
+                  )}
+                </article>
+              ))
+            )}
           </div>
         </div>
       </section>

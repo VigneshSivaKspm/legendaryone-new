@@ -112,9 +112,7 @@ const Services = () => {
             <div className="services-carousel" ref={carouselRef} role="list" aria-label="Service Offerings">
               {services.map((service, idx) => (
                 <article 
-                  className={`service-card ${activeService === idx ? 'active' : ''}`} 
-                  data-aos="fade-up" 
-                  data-aos-delay={100 + idx * 50} 
+                  className={`service-tile ${activeService === idx ? 'active' : ''}`} 
                   role="listitem" 
                   key={service.title}
                   onMouseEnter={() => setActiveService(idx)}

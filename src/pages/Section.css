@@ -3,7 +3,7 @@
   padding: 6rem 0;
   scroll-margin-top: 80px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   color: #e2e8f0;
 }
 
@@ -21,14 +21,14 @@
   font-weight: 800;
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  color: #ffd400;
+  color: #ffffff;
 }
 
 .section-subtitle {
   font-size: 1.3rem;
   max-width: 700px;
   margin: 0 auto 3rem;
-  color: rgb(255, 255, 255);
+  color: #fffbe6;
 }
 
 /* Universal: highlight spans inside section headings should be white */

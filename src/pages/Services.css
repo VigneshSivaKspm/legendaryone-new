@@ -1,3 +1,4 @@
+/* Services Section Layout & Background */
 .services-section {
   background:
     radial-gradient(900px 500px at 12% 20%, rgba(255, 212, 0, 0.08), transparent 60%),
@@ -5,7 +6,7 @@
     linear-gradient(180deg, #000000 0%, #050607 100%);
   color: white;
   position: relative;
-  overflow: visible; /* prevent hover effects from being clipped */
+  overflow: visible;
 }
 
 /* Ensure decorative background never blocks hover or overlaps cards */
@@ -47,12 +48,12 @@
   display: flex;
   gap: 1.25rem;
   overflow-x: auto;
-  overflow-y: visible; /* allow hover lift without clipping */
-  padding-block: 12px; /* vertical room for hover translate/scale */
+  overflow-y: visible;
+  padding-block: 12px;
   margin-top: 2rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  position: relative; /* establish stacking context above decorative bg */
+  position: relative;
   z-index: 2;
   /* Hide native scrollbar visuals */
   -ms-overflow-style: none; /* IE and Edge */
@@ -61,12 +62,11 @@
 
 .services-carousel::-webkit-scrollbar { display: none; }
 
-.service-card {
+ .service-tile {
   background: linear-gradient(145deg, #0a0b0d, #121418);
   border-radius: 16px;
   padding: 2rem 1.5rem;
   border: 1px solid rgba(255, 212, 0, 0.15);
-  /* Limit transitions to non-layout properties to avoid hover flicker/hide */
   transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
               border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
               background 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -75,32 +75,26 @@
   max-width: 320px;
   scroll-snap-align: start;
   color: #e6e8eb;
-  opacity: 1; /* keep card container visible; hide inner content instead */
+  opacity: 1;
   transform: none;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  /* Stabilize GPU compositing and stacking to prevent disappearing on hover */
-  backface-visibility: hidden;
-  will-change: box-shadow, border-color;
-  isolation: isolate;
-  contain: paint; /* create a new paint containment to avoid overlap glitches */
-  z-index: 1; /* keep card above backgrounds */
+  will-change: box-shadow, border-color, transform;
+  z-index: 2;
 }
 
-.service-card.visible {
+ .service-tile.visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: none;
 }
 
 /* Remove masked gradient ring to avoid browser-specific mask/transform glitches */
-.service-card::before { content: none; }
+ .service-tile::before { content: none; }
 
-.service-card:hover {
-  /* Keep hover purely visual; no movement or opacity changes */
-  transform: none;
-  opacity: 1;
+ .service-tile:hover {
+  transform: scale(1.06);
   border-color: rgba(255, 212, 0, 0.35);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  z-index: 2; /* lift above sibling cards when hovered */
+  z-index: 3;
 }
 
 .service-icon {
@@ -115,20 +109,20 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(255, 212, 0, 0.25);
 }
-.service-icon svg { 
-  width: 24px; 
-  height: 24px; 
-  color: #101114; 
+.service-icon svg {
+  width: 24px;
+  height: 24px;
+  color: #101114;
   transition: transform 0.3s ease;
 }
 
 /* no icon movement on hover */
-.service-card:hover .service-icon { 
-  transform: none; 
-  box-shadow: 0 4px 12px rgba(255, 212, 0, 0.25); 
+ .service-tile:hover .service-icon { 
+  transform: none;
+  box-shadow: 0 4px 12px rgba(255, 212, 0, 0.25);
 }
 
-.service-card h3 {
+ .service-tile h3 {
   font-size: 1.25rem;
   margin: 0 0 0.75rem 0;
   color: #ffffff;
@@ -138,23 +132,22 @@
   letter-spacing: 0.5px;
 }
 
-.service-card h3::after {
+ .service-tile h3::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 60px; /* fixed underline width, no hover animation */
+  width: 60px;
   height: 2px;
   background: linear-gradient(90deg, #ffd400, #ffdf33);
   border-radius: 2px;
   transition: none;
 }
-/* remove hover underline animation */
 
-.service-card p { 
-  color: #cfd3da; 
-  line-height: 1.6; 
-  margin: 0; 
+ .service-tile p { 
+  color: #cfd3da;
+  line-height: 1.6;
+  margin: 0;
   font-size: 0.95rem;
 }
 
@@ -170,8 +163,7 @@
   transition: all 0.3s ease;
 }
 
-.service-card:hover .service-hover-indicator {
-  /* Subtle indicator without affecting layout */
+ .service-tile:hover .service-hover-indicator {
   opacity: 1;
   transform: scale(1.2);
 }
@@ -223,16 +215,16 @@
 }
 
 @media (max-width: 768px) {
-  .service-card { 
-    min-width: 240px; 
+  .service-card {
+    min-width: 240px;
     padding: 1.5rem 1.25rem;
   }
-  
+
   .service-icon {
     width: 48px;
     height: 48px;
   }
-  
+
   .service-icon svg {
     width: 20px;
     height: 20px;
@@ -264,17 +256,11 @@
   transform: scale(1.05);
 }
 
-.carousel-control svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-}
-
 /* Position arrows to the left and right of the cards */
 .services-carousel-container {
   position: relative;
-  padding-inline: 0; /* no gutters since arrows are removed */
-  overflow: visible; /* ensure no clipping around edges */
+  padding-inline: 0;
+  overflow: visible;
 }
 
 .services-carousel-container .carousel-control { display: none !important; }
