@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import './Section.css';
 import './About.css';
 import AOS from 'aos';
@@ -12,9 +12,11 @@ const About = () => {
   }, []);
   return (
     <>
-      <Helmet>
-        <link rel="canonical" href="https://primetelsolutionsfze.com/about" />
-      </Helmet>
+      <SEO
+        title="About Legendary One"
+        description="Learn about Legendary One — our mission, values, and the team behind our high-quality web, mobile and branding solutions."
+        pathname="/about"
+      />
       <section className="section about-section" id="about" aria-labelledby="about-heading">
         <div className="circles-bg" role="presentation">
           {[...Array(3)].map((_, i) => (

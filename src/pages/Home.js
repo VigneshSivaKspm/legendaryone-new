@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './Home.css';
@@ -83,9 +83,12 @@ const Home = () => {
 
   return (
     <>
-      <Helmet>
-        <link rel="canonical" href="https://primetelsolutionsfze.com/" />
-      </Helmet>
+      <SEO
+        title="Legendary One - Home"
+        description="Legendary One builds modern web and mobile applications, delivering scalable and secure digital experiences for businesses."
+        pathname="/"
+        image="/logos/logo512.png"
+      />
       <main className="home-scroll-container" aria-label="Home Page">
 
         {/* Cosmic Hero Section */}

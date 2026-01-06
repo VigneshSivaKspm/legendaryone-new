@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import './Section.css';
 import './Industries.css';
 import AOS from 'aos';
@@ -13,9 +13,11 @@ const Industries = () => {
 
   return (
     <>
-      <Helmet>
-        <link rel="canonical" href="https://primetelsolutionsfze.com/industries" />
-      </Helmet>
+      <SEO
+        title="Industries Served — Legendary One"
+        description="Legendary One delivers tailored digital solutions across industries, with proven reliability, commitment, and scalable architectures."
+        pathname="/industries"
+      />
       <section className="section industries-section" id="industries" aria-labelledby="industries-heading">
         <div className="globe-container" data-aos="zoom-in" data-aos-delay="100" role="presentation">
           <div className="globe"></div>

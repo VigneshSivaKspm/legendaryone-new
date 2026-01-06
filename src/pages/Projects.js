@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import './Section.css';
 import './Projects.css';
 import AOS from 'aos';
@@ -153,9 +153,11 @@ const Projects = () => {
 
   return (
     <>
-      <Helmet>
-        <link rel="canonical" href="https://primetelsolutionsfze.com/projects" />
-      </Helmet>
+      <SEO
+        title="Projects — Legendary One Portfolio"
+        description="Browse Legendary One's portfolio showcasing web, mobile, and software projects delivered for clients across industries."
+        pathname="/projects"
+      />
       <section className="section projects-section" id="projects">
         <div className="section-content">
           <header className="section-header" data-aos="fade-up">

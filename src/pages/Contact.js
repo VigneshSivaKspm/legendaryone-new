@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './Section.css';
@@ -27,9 +27,11 @@ const Contact = () => {
 
   return (
     <>
-      <Helmet>
-        <link rel="canonical" href="https://primetalsolutionsfze.com/contact" />
-      </Helmet>
+      <SEO
+        title="Contact — Legendary One"
+        description="Get in touch with Legendary One for web, mobile, and technical solutions. We're ready to discuss your project and provide a free consultation."
+        pathname="/contact"
+      />
       <section className="section contact-section" id="contact">
         <div className="contact-bg" data-aos="fade-in" data-aos-delay="100"></div>
         <div className="section-content">

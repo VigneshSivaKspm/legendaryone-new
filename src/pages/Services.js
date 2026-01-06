@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import './Section.css';
 import './Services.css';
 import AOS from 'aos';
@@ -81,9 +81,11 @@ const Services = () => {
 
   return (
     <>
-      <Helmet>
-        <link rel="canonical" href="https://primetelsolutionsfze.com/services" />
-      </Helmet>
+      <SEO
+        title="Services — Legendary One"
+        description="Explore Legendary One's services: web & mobile development, branding, cloud & DevOps, and tailored technical solutions."
+        pathname="/services"
+      />
       <section 
         className="section services-section" 
         id="services" 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import './Technologies.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -347,9 +347,11 @@ const iconMap = (name) => {
 
   return (
     <>
-      <Helmet>
-        <link rel="canonical" href="https://primetelsolutionsfze.com/technologies" />
-      </Helmet>
+      <SEO
+        title="Technologies — Legendary One Tech Stack"
+        description="Our technology stack: frontend, backend, mobile, cloud, DevOps, testing and observability tools used to build scalable systems."
+        pathname="/technologies"
+      />
       <section className="section technologies-section" id="technologies" aria-labelledby="technologies-heading">
         <div className="particles-bg" id="particles-js" data-aos="fade-in" data-aos-delay="100" role="presentation"></div>
         <div className="aurora-bg" aria-hidden="true"></div>
@@ -394,7 +396,7 @@ const iconMap = (name) => {
                         const isDark = darkSet.has(name);
                         // Silence expected missing icons (concepts/tools without devicon logos)
                         const expectedNoIcon = new Set([
-                          'Zustand','Vuex','NgRx','Gin','Fiber','Actix','REST','Apollo','Capacitor','Memcached','OpenSearch','TimescaleDB','Argo CD','Kustomize','HAProxy','DNS','Load Balancing','Vitest','Testing Library','Pact','OpenTelemetry','OAuth 2.0','OIDC','JWT','OWASP ASVS','ZAP','KMS','mTLS','WAF','CSP','Superset','gRPC','WebSockets','SSE','Packer','Crossplane','Sanity','WooCommerce','Linear','Zeplin','Lottie','SVG','Edge Functions','Workers','Serverless Functions','CDN','Conventional Commits','Semantic Release','Auth0'
+                          'Zustand','Vuex','NgRx','Gin','Fiber','Actix','REST','Apollo','Capacitor','Memcached','OpenSearch','TimescaleDB','Argo CD','Kustomize','HAProxy','DNS','Load Balancing','Vitest','Testing Library','Pact','OpenTelemetry','OAuth 2.0','OIDC','JWT','OWASP ASVS','ZAP','KMS','mTLS','WAF','CSP','Superset','gRPC','WebSockets','SSE','Packer','Crossplane','Sanity','WooCommerce','Linear','Zeplin','Lottie','SVG','Edge Functions','Workers','Serverless Functions','CDN','Conventional Commits','Semantic Release','Auth0','Newman'
                         ]);
                         if (!src && !expectedNoIcon.has(name) && process.env.NODE_ENV === 'development') {
                           // Log only unexpected missing icons during development

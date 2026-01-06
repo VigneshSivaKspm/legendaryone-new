@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import './Section.css';
 import './WhyPrimetel.css';
 import AOS from 'aos';
@@ -16,9 +16,12 @@ const WhyPrimetel = () => {
 
   return (
     <>
-      <Helmet>
-        <link rel="canonical" href="https://primetelsolutionsfze.com/why" />
-      </Helmet>
+      <SEO
+        title="Why Choose Legendary One"
+        description="Discover why top teams choose Legendary One for secure, scalable and cost-effective digital solutions tailored to business needs."
+        pathname="/why"
+        image="/logos/logo512.png"
+      />
       <section className="section why-primetel-section" id="why-primetel" aria-labelledby="why-heading">
         <div className="floating-shapes" data-aos="zoom-in" data-aos-delay="100" role="presentation">
           <div className="shape triangle"></div>

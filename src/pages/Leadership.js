@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import './Section.css';
 import './Leadership.css';
 import AOS from 'aos';
@@ -63,9 +63,11 @@ const Leadership = () => {
 
   return (
     <>
-      <Helmet>
-        <link rel="canonical" href="https://primetelsolutionsfze.com/leadership" />
-      </Helmet>
+      <SEO
+        title="Leadership & Reviews — Legendary One"
+        description="Read client reviews and learn about the leadership behind Legendary One's successful digital solutions."
+        pathname="/leadership"
+      />
       <section className="section leadership-section" id="google-reviews" aria-labelledby="reviews-heading">
         <div className="section-content">
           <header className="section-header" data-aos="fade-down">
