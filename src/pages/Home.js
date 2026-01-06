@@ -99,9 +99,9 @@ const Home = () => {
               {/* Logo Container */}
               <div className="logo-container">
                 <div className="hero-logo" role="img" aria-label="Company Logo">
-                  <img src="/assets/img/logopart1.png" alt="Logo Part 1" className="logo-part part-1" />
-                  <img src="/assets/img/logopart2.png" alt="Logo Part 2" className="logo-part part-2" />
-                  <img src="/assets/img/logopart3.png" alt="Logo Part 3" className="logo-part part-3" />
+                  <img src="/logos/logopart1.webp" alt="Logo Part 1" className="logo-part part-1" />
+                  <img src="/logos/logopart2.webp" alt="Logo Part 2" className="logo-part part-2" />
+                  <img src="/logos/logopart3.webp" alt="Logo Part 3" className="logo-part part-3" />
                 </div>
               </div>
               

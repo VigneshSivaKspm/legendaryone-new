@@ -11,6 +11,16 @@ const Projects = () => {
     AOS.refresh();
   }, []);
 
+  const [showAll, setShowAll] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const categories = ['All', 'Websites', 'Softwares', 'Android Apps'];
   const [selectedCategory, setSelectedCategory] = useState('All');
 
@@ -177,7 +187,10 @@ const Projects = () => {
                 <p>We're working on something amazing for this category!</p>
               </div>
             ) : (
-              filteredProjects.map((project, idx) => (
+              // show only first 3 on mobile unless user toggles "See All"
+              (() => {
+                const shownProjects = (isMobile && !showAll) ? filteredProjects.slice(0, 3) : filteredProjects;
+                return shownProjects.map((project, idx) => (
                 <article
                   className="project-card"
                   data-aos="fade-up"
@@ -215,9 +228,21 @@ const Projects = () => {
                     </a>
                   )}
                 </article>
-              ))
+                ));
+              })()
             )}
           </div>
+          {/* See All / Show Less toggle for mobile */}
+          {isMobile && filteredProjects.length > 3 && (
+            <div className="projects-footer" data-aos="fade-up">
+              <button
+                className="see-all-btn"
+                onClick={() => setShowAll(prev => !prev)}
+              >
+                {showAll ? 'Show Less' : `See All (${filteredProjects.length})`}
+              </button>
+            </div>
+          )}
         </div>
       </section>
     </>
