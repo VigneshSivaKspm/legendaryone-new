@@ -1,5 +1,10 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -29,6 +34,14 @@ import FloatingCTA from "./components/FloatingCTA";
 import SocialProofToast from "./components/SocialProofToast";
 import StickyMobileCTA from "./components/StickyMobileCTA";
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   const [showAnnouncement, setShowAnnouncement] = useState(
     () => !sessionStorage.getItem("announcement_dismissed"),
@@ -41,6 +54,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       {showAnnouncement && <AnnouncementBar onDismiss={dismissAnnouncement} />}
       <Navbar announcementVisible={showAnnouncement} />
       <Routes>
