@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "outputDirectory": "dist",
+  "env": [
+    "GMAIL_USER",
+    "GMAIL_APP_PASSWORD",
+    "CONTACT_EMAIL",
+    "VITE_GOOGLE_API_KEY",
+    "VITE_GOOGLE_PLACE_ID"
+  ]
+}
