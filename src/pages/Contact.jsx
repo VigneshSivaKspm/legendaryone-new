@@ -397,7 +397,7 @@ const Contact = ({ hideSEO = false }) => {
                                   : "Send message"
                         }
                       >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -translate-x-full group-hover:translate-x-full transition-all duration-700"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -translate-x-full group-hover:translate-x-full transition-all duration-700 pointer-events-none"></div>
                         {submitting ? (
                           <>
                             <svg
@@ -492,11 +492,11 @@ const Contact = ({ hideSEO = false }) => {
                         {item.href ? (
                           <a
                             href={item.href}
-                            className="text-sm text-navy font-semibold group-hover:text-azure transition-colors duration-300 inline-flex items-center gap-2"
+                            className="text-sm text-navy font-semibold group-hover:text-azure transition-colors duration-300 flex flex-wrap items-center gap-2"
                           >
                             {item.value}
                             <svg
-                              className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+                              className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
