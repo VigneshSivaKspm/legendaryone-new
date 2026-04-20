@@ -377,25 +377,8 @@ const Contact = ({ hideSEO = false }) => {
                       {/* Submit button */}
                       <button
                         type="submit"
-                        disabled={
-                          submitting ||
-                          !fields.name.trim() ||
-                          !fields.email.trim() ||
-                          !fields.message.trim() ||
-                          fields.message.length < 10
-                        }
+                        disabled={submitting}
                         className="w-full py-4 bg-gradient-to-r from-azure via-blue-500 to-llime text-white font-bold rounded-xl shadow-azure-md hover:shadow-azure-lg hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:-translate-y-0 disabled:shadow-none text-sm flex items-center justify-center gap-2 relative overflow-hidden group"
-                        title={
-                          !fields.name.trim()
-                            ? "Please enter your name"
-                            : !fields.email.trim()
-                              ? "Please enter your email"
-                              : !fields.message.trim()
-                                ? "Please enter your message"
-                                : fields.message.length < 10
-                                  ? "Message must be at least 10 characters"
-                                  : "Send message"
-                        }
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -translate-x-full group-hover:translate-x-full transition-all duration-700 pointer-events-none"></div>
                         {submitting ? (
