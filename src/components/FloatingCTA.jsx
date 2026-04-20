@@ -43,19 +43,16 @@ const FloatingCTA = () => {
 
     setSubmitting(true);
     try {
-      const messageBody = [
-        "[FLOATING CTA — Quick Quote Request]",
-        `Phone: ${fields.phone.trim() || "Not provided"}`,
-        `Service: ${fields.service || "Not specified"}`,
-      ].join("\n");
-
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: fields.name.trim(),
           email: fields.email.trim(),
-          message: messageBody,
+          phone: fields.phone.trim(),
+          service: fields.service,
+          message: `Quick quote request via website sidebar.${fields.service ? ` Interested in: ${fields.service}.` : ""} Please get in touch to discuss details.`,
+          source: "floating",
         }),
       });
       if (!res.ok) throw new Error("Failed");

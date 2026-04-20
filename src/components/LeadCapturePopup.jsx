@@ -83,21 +83,17 @@ const LeadCapturePopup = () => {
 
     setSubmitting(true);
     try {
-      const messageBody = [
-        "[POPUP LEAD — Free Consultation Request]",
-        `Phone: ${fields.phone.trim() || "Not provided"}`,
-        `Service Interest: ${fields.service || "Not specified"}`,
-        "",
-        `Notes: ${fields.message.trim() || "Requested free consultation via popup"}`,
-      ].join("\n");
-
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: fields.name.trim(),
           email: fields.email.trim(),
-          message: messageBody,
+          phone: fields.phone.trim(),
+          service: fields.service,
+          message:
+            fields.message.trim() || "Requested free consultation via popup.",
+          source: "popup",
         }),
       });
       if (!res.ok) throw new Error("Submission failed");

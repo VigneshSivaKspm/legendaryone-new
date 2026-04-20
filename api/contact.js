@@ -83,24 +83,27 @@ export default async function handler(req, res) {
   const startTime = new Date().toISOString();
   console.log(`[${startTime}] Incoming request: ${req.method}`);
 
-  // Only accept POST requests
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
   // Enable CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // Handle preflight requests
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
+  if (req.method === "OPTIONS") return res.status(200).end();
+
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { name, email, message } = req.body;
+  const {
+    name,
+    email,
+    message,
+    phone = "",
+    service = "",
+    source = "Contact Form",
+  } = req.body;
 
-  // Validate input
+  // Validate required fields
   if (!name || !email || !message) {
     console.warn(
       `[${startTime}] Missing fields - Name: ${!!name}, Email: ${!!email}, Message: ${!!message}`,
@@ -115,71 +118,154 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Invalid email address" });
   }
 
-  // Validate message length
-  if (message.length < 10) {
-    console.warn(
-      `[${startTime}] Message too short (${message.length} chars): ${email}`,
-    );
-    return res.status(400).json({
-      error: "Message must be at least 10 characters long",
-    });
-  }
-
-  if (message.length > 500) {
-    console.warn(
-      `[${startTime}] Message too long (${message.length} chars): ${email}`,
-    );
+  // Validate message length (relaxed max for popup/floating forms)
+  if (message.trim().length < 5) {
     return res
       .status(400)
-      .json({ error: "Message must be under 500 characters" });
+      .json({ error: "Message must be at least 5 characters long" });
+  }
+
+  if (message.length > 2000) {
+    return res.status(400).json({ error: "Message is too long" });
   }
 
   console.log(
-    `[${startTime}] Processing submission from: ${email} | Name: ${name}`,
+    `[${startTime}] Processing submission from: ${email} | Name: ${name} | Source: ${source}`,
   );
+
+  // Determine source label for subject line
+  const sourceLabel =
+    source === "popup"
+      ? "🎯 Popup Lead"
+      : source === "floating"
+        ? "📋 Quick Quote"
+        : "📬 Contact Form";
+
+  const submissionId = Date.now();
+  const timestamp = new Date().toLocaleString("en-IN", {
+    timeZone: "Asia/Kolkata",
+  });
 
   try {
     const businessEmailOptions = {
-      from: process.env.GMAIL_USER,
+      from: `"Legendary One Website" <${process.env.GMAIL_USER}>`,
       to: process.env.CONTACT_EMAIL || process.env.GMAIL_USER,
-      subject: `New Contact Form Submission from ${name}`,
+      subject: `${sourceLabel} — ${escapeHtml(name)} | Legendary One`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #001e3c; border-bottom: 3px solid #007bff; padding-bottom: 10px;">New Contact Form Submission</h2>
-          <div style="margin: 20px 0; background-color: #f8f9fa; padding: 15px; border-radius: 8px;">
-            <p><strong>Submission ID:</strong> ${Date.now()}</p>
-            <p><strong>Timestamp:</strong> ${new Date().toLocaleString()}</p>
-            <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-            <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-            <p><strong>Message:</strong></p>
-            <p style="white-space: pre-wrap; color: #333; border-left: 4px solid #007bff; padding-left: 10px;">${escapeHtml(
-              message,
-            )}</p>
+        <!DOCTYPE html>
+        <html>
+        <head><meta charset="utf-8"></head>
+        <body style="margin:0;padding:0;background:#f1f5f9;font-family:Arial,sans-serif;">
+          <div style="max-width:600px;margin:32px auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+            <!-- Header -->
+            <div style="background:linear-gradient(135deg,#001e3c 0%,#0047ab 100%);padding:28px 32px;text-align:center;">
+              <div style="font-size:28px;font-weight:900;color:#fff;letter-spacing:-0.5px;">LEGENDARY <span style="color:#c8f078;">ONE</span></div>
+              <div style="color:#94aabf;font-size:13px;margin-top:4px;">New Lead Notification</div>
+            </div>
+            <!-- Source badge -->
+            <div style="background:#f8faff;border-bottom:1px solid #e2e8f0;padding:12px 32px;display:flex;align-items:center;gap:8px;">
+              <span style="background:#0047ab;color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:0.5px;">${escapeHtml(source.toUpperCase())}</span>
+              <span style="color:#64748b;font-size:12px;">Submission ID: <strong>#${submissionId}</strong></span>
+              <span style="color:#64748b;font-size:12px;margin-left:auto;">${timestamp} IST</span>
+            </div>
+            <!-- Body -->
+            <div style="padding:28px 32px;">
+              <table style="width:100%;border-collapse:collapse;">
+                <tr>
+                  <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;width:130px;color:#64748b;font-size:13px;font-weight:600;">👤 Name</td>
+                  <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;color:#0f172a;font-size:14px;font-weight:700;">${escapeHtml(name)}</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;color:#64748b;font-size:13px;font-weight:600;">📧 Email</td>
+                  <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;font-size:14px;"><a href="mailto:${escapeHtml(email)}" style="color:#0047ab;font-weight:700;">${escapeHtml(email)}</a></td>
+                </tr>
+                ${
+                  phone
+                    ? `<tr>
+                  <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;color:#64748b;font-size:13px;font-weight:600;">📞 Phone</td>
+                  <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;color:#0f172a;font-size:14px;font-weight:700;"><a href="tel:${escapeHtml(phone)}" style="color:#0047ab;font-weight:700;">${escapeHtml(phone)}</a></td>
+                </tr>`
+                    : ""
+                }
+                ${
+                  service
+                    ? `<tr>
+                  <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;color:#64748b;font-size:13px;font-weight:600;">🛠️ Service</td>
+                  <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;color:#0f172a;font-size:14px;font-weight:700;">${escapeHtml(service)}</td>
+                </tr>`
+                    : ""
+                }
+              </table>
+
+              <div style="margin-top:20px;">
+                <div style="color:#64748b;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">💬 Message</div>
+                <div style="background:#f8faff;border-left:4px solid #0047ab;border-radius:0 8px 8px 0;padding:14px 16px;color:#0f172a;font-size:14px;line-height:1.7;white-space:pre-wrap;">${escapeHtml(message)}</div>
+              </div>
+            </div>
+            <!-- CTA -->
+            <div style="padding:20px 32px;background:#f8faff;border-top:1px solid #e2e8f0;text-align:center;">
+              <a href="mailto:${escapeHtml(email)}" style="display:inline-block;background:linear-gradient(135deg,#0047ab,#006fff);color:#fff;font-weight:700;font-size:13px;padding:10px 24px;border-radius:8px;text-decoration:none;margin-right:8px;">Reply by Email</a>
+              ${phone ? `<a href="https://wa.me/91${escapeHtml(phone.replace(/\D/g, ""))}?text=Hi%20${encodeURIComponent(name)}%2C%20I'm%20from%20Legendary%20One!" style="display:inline-block;background:#25D366;color:#fff;font-weight:700;font-size:13px;padding:10px 24px;border-radius:8px;text-decoration:none;">Reply on WhatsApp</a>` : ""}
+            </div>
+            <!-- Footer -->
+            <div style="padding:16px 32px;text-align:center;color:#94a3b8;font-size:11px;">
+              Legendary One · Gobi, Erode, Tamil Nadu, India · legendaryoneff@gmail.com
+            </div>
           </div>
-          <p style="color: #666; font-size: 12px; margin-top: 20px;">This is an automated email from your website contact form.</p>
-        </div>
+        </body>
+        </html>
       `,
     };
 
     const userEmailOptions = {
-      from: process.env.GMAIL_USER,
+      from: `"Legendary One" <${process.env.GMAIL_USER}>`,
       to: email,
-      subject: "We've received your message — Legendary One",
+      subject: "We've received your message — Legendary One ✅",
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #007bff;">Thank You for Contacting Legendary One!</h2>
-          <p>Hi ${escapeHtml(name)},</p>
-          <p>We've received your message and will get back to you within 24 hours.</p>
-          <div style="margin: 20px 0; background-color: #f8f9fa; padding: 15px; border-radius: 8px;">
-            <p><strong>Your Message:</strong></p>
-            <p style="white-space: pre-wrap; color: #333; border-left: 4px solid #007bff; padding-left: 10px;">${escapeHtml(
-              message,
-            )}</p>
+        <!DOCTYPE html>
+        <html>
+        <head><meta charset="utf-8"></head>
+        <body style="margin:0;padding:0;background:#f1f5f9;font-family:Arial,sans-serif;">
+          <div style="max-width:600px;margin:32px auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+            <!-- Header -->
+            <div style="background:linear-gradient(135deg,#001e3c 0%,#0047ab 100%);padding:28px 32px;text-align:center;">
+              <div style="font-size:28px;font-weight:900;color:#fff;letter-spacing:-0.5px;">LEGENDARY <span style="color:#c8f078;">ONE</span></div>
+              <div style="color:#94aabf;font-size:13px;margin-top:4px;">We've got your message!</div>
+            </div>
+            <!-- Body -->
+            <div style="padding:32px;">
+              <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;">Hi ${escapeHtml(name)}! 👋</div>
+              <p style="color:#475569;font-size:15px;line-height:1.7;margin:0 0 20px;">Thank you for reaching out to <strong>Legendary One</strong>. We've successfully received your message and our team will get back to you within <strong>24 hours</strong>.</p>
+
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:12px;">
+                <div style="font-size:24px;">✅</div>
+                <div>
+                  <div style="font-weight:700;color:#166534;font-size:14px;">Submission Confirmed</div>
+                  <div style="color:#15803d;font-size:13px;">Your message is safe with us. Reference: #${submissionId}</div>
+                </div>
+              </div>
+
+              ${service ? `<div style="background:#eff6ff;border-radius:8px;padding:12px 16px;margin-bottom:20px;font-size:13px;color:#1d4ed8;"><strong>Service requested:</strong> ${escapeHtml(service)}</div>` : ""}
+
+              <div style="border-top:1px solid #e2e8f0;padding-top:20px;margin-top:4px;">
+                <div style="color:#64748b;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Your Message</div>
+                <div style="background:#f8faff;border-left:4px solid #0047ab;border-radius:0 8px 8px 0;padding:14px 16px;color:#334155;font-size:14px;line-height:1.7;white-space:pre-wrap;">${escapeHtml(message)}</div>
+              </div>
+
+              <div style="margin-top:28px;background:#0f172a;border-radius:10px;padding:20px 24px;text-align:center;">
+                <div style="color:#94a3b8;font-size:12px;margin-bottom:12px;">Need a faster response? Reach us on WhatsApp:</div>
+                <a href="https://wa.me/917339596165" style="display:inline-block;background:#25D366;color:#fff;font-weight:700;font-size:14px;padding:10px 28px;border-radius:8px;text-decoration:none;">💬 Chat on WhatsApp</a>
+                <div style="color:#64748b;font-size:11px;margin-top:8px;">+91 7339596165 · Usually replies in minutes</div>
+              </div>
+            </div>
+            <!-- Footer -->
+            <div style="padding:16px 32px;background:#f8faff;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:11px;">
+              Legendary One · Gobi, Erode, Tamil Nadu, India<br>
+              <span style="color:#cbd5e1;">This is an automated confirmation. Please do not reply to this email.</span>
+            </div>
           </div>
-          <p style="margin-top: 20px;">Best regards,<br><strong>Legendary One Team</strong></p>
-          <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
-          <p style="color: #666; font-size: 12px;">This is an automated response. Please do not reply to this email.</p>
-        </div>
+        </body>
+        </html>
       `,
     };
 

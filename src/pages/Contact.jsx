@@ -61,7 +61,7 @@ const Contact = ({ hideSEO = false }) => {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(fields),
+        body: JSON.stringify({ ...fields, source: "contact" }),
       });
 
       if (!response.ok) {
