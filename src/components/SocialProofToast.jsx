@@ -92,7 +92,7 @@ const SocialProofToast = () => {
 
   return (
     <div
-      className={`fixed bottom-28 left-4 z-[1050] max-w-[272px] transition-all duration-500 ${
+      className={`fixed md:bottom-28 bottom-20 left-4 z-[1050] max-w-xs md:max-w-[272px] transition-all duration-500 ${
         isVisible && !dismissed
           ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
           : "opacity-0 translate-y-5 scale-95 pointer-events-none"
@@ -101,24 +101,24 @@ const SocialProofToast = () => {
       role="status"
       aria-live="polite"
     >
-      <div className="bg-white rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.13)] border border-gray-100 p-3.5 flex items-center gap-3">
+      <div className="bg-white rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.13)] border border-gray-100 sm:p-3.5 p-2 flex items-center sm:gap-3 gap-2">
         {/* Avatar */}
-        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-azure to-llime flex items-center justify-center text-white font-black text-sm flex-shrink-0 shadow-sm">
+        <div className="sm:w-9 sm:h-9 w-7 h-7 rounded-full bg-gradient-to-br from-azure to-llime flex items-center justify-center text-white font-black sm:text-sm text-xs flex-shrink-0 shadow-sm">
           {a.name.charAt(0)}
         </div>
 
         {/* Content */}
         <div className="min-w-0 flex-1">
-          <p className="text-xs font-bold text-navy leading-snug">
+          <p className="sm:text-xs text-[11px] font-bold text-navy leading-snug">
             {a.name}{" "}
             <span className="font-normal text-slate-400">· {a.location}</span>
           </p>
-          <p className="text-xs text-slate-500 mt-0.5 leading-relaxed line-clamp-1">
+          <p className="sm:text-xs text-[10px] text-slate-500 mt-0.5 leading-relaxed line-clamp-1">
             {a.action}
           </p>
           <div className="flex items-center gap-1.5 mt-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block flex-shrink-0" />
-            <span className="text-[10px] text-slate-400 font-medium">
+            <span className="sm:text-[10px] text-[9px] text-slate-400 font-medium">
               Just now
             </span>
           </div>

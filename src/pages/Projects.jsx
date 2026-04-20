@@ -3,6 +3,36 @@ import SEO from "../components/SEO";
 
 const projectsData = [
   {
+    year: "2026",
+    title: "Spark Writers Retreat",
+    desc: "Premier Himalayan writers retreat offering 7-day immersive experience with award-winning mentors and manuscript development.",
+    categories: ["Websites"],
+    link: "https://www.sparkwritersretreat.com/",
+    image: "/projects/sparkwriters.png",
+    tech: ["React", "HTML", "CSS"],
+    status: "Live",
+  },
+  {
+    year: "2025",
+    title: "Niklaus Solutions",
+    desc: "Industry-oriented training platform offering 50+ workshops in ethical hacking, full-stack development, AI/ML, and cloud computing.",
+    categories: ["Websites"],
+    link: "https://www.theniklaus.com/",
+    image: "/projects/theniklaus.png",
+    tech: ["React", "Firebase", "CSS"],
+    status: "Live",
+  },
+  {
+    year: "2025",
+    title: "Velvet Luxury Salon",
+    desc: "Premium salon platform with online booking for hair services, facials, body treatments, and wellness therapies.",
+    categories: ["Websites"],
+    link: "https://www.velvetluxurysalon.in/",
+    image: "/projects/velvetluxurysalon.png",
+    tech: ["React", "HTML", "CSS"],
+    status: "Live",
+  },
+  {
     year: "2025",
     title: "KALI TRADERS",
     desc: "Professional website for a trusted tile solutions provider specializing in tile pastes, grout, epoxy, and beeding solutions.",
@@ -94,31 +124,11 @@ const projectsData = [
   },
   {
     year: "2026",
-    title: "Spark Writers Retreat",
-    desc: "Premier Himalayan writers retreat offering 7-day immersive experience with award-winning mentors and manuscript development.",
+    title: "Blue Bell Gifts",
+    desc: "Premier gift shop offering a curated selection of unique and personalized gifts for all occasions.",
     categories: ["Websites"],
-    link: "https://www.sparkwritersretreat.com/",
-    image: "/projects/sparkwriters.png",
-    tech: ["React", "HTML", "CSS"],
-    status: "Live",
-  },
-  {
-    year: "2025",
-    title: "Niklaus Solutions",
-    desc: "Industry-oriented training platform offering 50+ workshops in ethical hacking, full-stack development, AI/ML, and cloud computing.",
-    categories: ["Websites"],
-    link: "https://www.theniklaus.com/",
-    image: "/projects/theniklaus.png",
-    tech: ["React", "Firebase", "CSS"],
-    status: "Live",
-  },
-  {
-    year: "2025",
-    title: "Velvet Luxury Salon",
-    desc: "Premium salon platform with online booking for hair services, facials, body treatments, and wellness therapies.",
-    categories: ["Websites"],
-    link: "https://www.velvetluxurysalon.in/",
-    image: "/projects/velvetluxurysalon.png",
+    link: "https://www.bluebellgifts.in/",
+    image: "/projects/bluebellgifts.png",
     tech: ["React", "HTML", "CSS"],
     status: "Live",
   },
@@ -132,7 +142,7 @@ const statusColors = {
   Completed: "bg-mint/10 text-teal-700 border-mint/30",
 };
 
-const Projects = () => {
+const Projects = ({ hideSEO = false }) => {
   const [cat, setCat] = useState("All");
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -152,11 +162,13 @@ const Projects = () => {
 
   return (
     <>
-      <SEO
-        title="Projects — Legendary One"
-        description="Browse our portfolio of web, mobile, and software projects."
-        pathname="/projects"
-      />
+      {!hideSEO && (
+        <SEO
+          title="Projects | Legendary One"
+          description="Browse our portfolio of web, mobile, and software projects."
+          pathname="/projects"
+        />
+      )}
 
       <section
         id="projects"

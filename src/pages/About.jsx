@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
 
-const About = () => {
+const About = ({ hideSEO = false }) => {
   const cards = [
     {
       id: "who-we-are",
@@ -60,11 +60,13 @@ const About = () => {
 
   return (
     <>
-      <SEO
-        title="About Legendary One"
-        description="Learn about Legendary One — our mission, values, and team."
-        pathname="/about"
-      />
+      {!hideSEO && (
+        <SEO
+          title="About Legendary One"
+          description="Learn about Legendary One — our mission, values, and team."
+          pathname="/about"
+        />
+      )}
 
       <section
         id="about"

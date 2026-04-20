@@ -2,11 +2,21 @@
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "outputDirectory": "dist",
-  "env": [
-    "GMAIL_USER",
-    "GMAIL_APP_PASSWORD",
-    "CONTACT_EMAIL",
-    "VITE_GOOGLE_API_KEY",
-    "VITE_GOOGLE_PLACE_ID"
-  ]
+  "env": {
+    "GMAIL_USER": {
+      "description": "Gmail account for sending emails"
+    },
+    "GMAIL_APP_PASSWORD": {
+      "description": "Gmail app-specific password"
+    },
+    "CONTACT_EMAIL": {
+      "description": "Email address to receive contact form submissions"
+    },
+    "VITE_GOOGLE_API_KEY": {
+      "description": "Google Maps API key"
+    },
+    "VITE_GOOGLE_PLACE_ID": {
+      "description": "Google Place ID for business reviews"
+    }
+  }
 }

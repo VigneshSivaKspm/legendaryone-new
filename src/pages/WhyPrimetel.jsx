@@ -62,7 +62,7 @@ const reasons = [
   },
 ];
 
-const WhyLegendaryOne = () => {
+const WhyLegendaryOne = ({ hideSEO = false }) => {
   useEffect(() => {
     AOS.init({ once: true });
     AOS.refresh();
@@ -70,12 +70,14 @@ const WhyLegendaryOne = () => {
 
   return (
     <>
-      <SEO
-        title="Why Choose Legendary One"
-        description="Discover why top teams choose Legendary One for secure, scalable and cost-effective digital solutions tailored to business needs."
-        pathname="/why"
-        image="/logos/logo512.png"
-      />
+      {!hideSEO && (
+        <SEO
+          title="Why Choose Legendary One"
+          description="Discover why top teams choose Legendary One for secure, scalable and cost-effective digital solutions tailored to business needs."
+          pathname="/why"
+          image="/logos/logo512.png"
+        />
+      )}
       <section
         className="py-28 bg-slate-50 relative overflow-hidden"
         id="why-primetel"

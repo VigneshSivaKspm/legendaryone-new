@@ -52,13 +52,15 @@ const industries = [
   },
 ];
 
-const Industries = () => (
+const Industries = ({ hideSEO = false }) => (
   <>
-    <SEO
-      title="Industries — Legendary One"
-      description="Legendary One delivers tailored digital solutions across e-commerce, healthcare, education, manufacturing, and more."
-      pathname="/industries"
-    />
+    {!hideSEO && (
+      <SEO
+        title="Industries | Legendary One"
+        description="Legendary One delivers tailored digital solutions across e-commerce, healthcare, education, manufacturing, and more."
+        pathname="/industries"
+      />
+    )}
 
     <section
       id="industries"

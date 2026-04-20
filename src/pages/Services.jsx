@@ -68,16 +68,18 @@ const services = [
   },
 ];
 
-const Services = () => {
+const Services = ({ hideSEO = false }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
     <>
-      <SEO
-        title="Services — Legendary One"
-        description="Explore Legendary One's full suite of IT services."
-        pathname="/services"
-      />
+      {!hideSEO && (
+        <SEO
+          title="Services | Legendary One"
+          description="Explore Legendary One's full suite of IT services."
+          pathname="/services"
+        />
+      )}
 
       <section
         id="services"

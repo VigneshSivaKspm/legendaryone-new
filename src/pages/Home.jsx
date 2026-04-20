@@ -60,7 +60,7 @@ const Home = () => {
   return (
     <>
       <SEO
-        title="Legendary One — World-Class IT Solutions"
+        title="Legendary One | Where Innovation Meets Excellence"
         description="Legendary One builds modern web and mobile applications, delivering scalable and secure digital experiences for businesses."
         pathname="/"
         image="/logos/logo512.png"
@@ -144,17 +144,6 @@ const Home = () => {
               >
                 View Our Work
               </Link>
-            </div>
-          </div>
-
-          {/* Scroll indicator */}
-          <div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-            data-aos="fade-up"
-            data-aos-delay="600"
-          >
-            <div className="w-6 h-10 border-2 border-slate-200 rounded-full flex justify-center pt-2 hover:border-azure transition-colors cursor-pointer">
-              <div className="w-1 h-2.5 bg-azure rounded-full animate-bounce"></div>
             </div>
           </div>
         </section>
@@ -285,8 +274,8 @@ const Home = () => {
           </div>
         </div>
 
-        <About />
-        <Projects />
+        <About hideSEO={true} />
+        <Projects hideSEO={true} />
 
         {/* ── Legendary vs The Rest ──────────────────── */}
         <section className="py-20 bg-white relative overflow-hidden">
@@ -549,11 +538,11 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <Services />
-        <WhyLegendaryOne />
-        <Technologies />
-        <Industries />
-        <Leadership />
+        <Services hideSEO={true} />
+        <WhyLegendaryOne hideSEO={true} />
+        <Technologies hideSEO={true} />
+        <Industries hideSEO={true} />
+        <Leadership hideSEO={true} />
 
         {/* ── Pre-Footer Scarcity CTA ────────────────── */}
         <section className="py-24 bg-gradient-to-br from-[#060d1a] via-navy to-[#081228] relative overflow-hidden">
@@ -663,7 +652,7 @@ const Home = () => {
           </div>
         </section>
 
-        <Contact />
+        <Contact hideSEO={true} />
       </main>
     </>
   );

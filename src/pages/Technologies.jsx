@@ -122,7 +122,7 @@ const categories = [
   },
 ];
 
-const Technologies = () => {
+const Technologies = ({ hideSEO = false }) => {
   const ref = useRef(null);
 
   const scroll = (dir) => {
@@ -132,11 +132,13 @@ const Technologies = () => {
 
   return (
     <>
-      <SEO
-        title="Technologies — Legendary One"
-        description="Our comprehensive modern tech stack."
-        pathname="/technologies"
-      />
+      {!hideSEO && (
+        <SEO
+          title="Technologies | Legendary One"
+          description="Our comprehensive modern tech stack."
+          pathname="/technologies"
+        />
+      )}
 
       <section
         id="technologies"

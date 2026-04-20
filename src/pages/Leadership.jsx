@@ -20,7 +20,7 @@ const StarRating = ({ rating }) => (
   </div>
 );
 
-const Leadership = () => {
+const Leadership = ({ hideSEO = false }) => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -82,11 +82,13 @@ const Leadership = () => {
 
   return (
     <>
-      <SEO
-        title="Client Reviews — Legendary One"
-        description="Read client reviews for Legendary One."
-        pathname="/leadership"
-      />
+      {!hideSEO && (
+        <SEO
+          title="Client Reviews | Legendary One"
+          description="Read client reviews for Legendary One."
+          pathname="/leadership"
+        />
+      )}
 
       <section
         id="google-reviews"

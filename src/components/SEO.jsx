@@ -1,51 +1,63 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import React from "react";
+import { Helmet } from "react-helmet-async";
 
 const siteDefaults = {
-  title: 'Legendary One | Empowering Connectivity Across Continents',
-  description: 'Legendary One provides industrial solutions, engineering, and technology services focused on innovation, performance and security.',
-  url: 'https://legendaryone.in',
-  image: '/logos/logo512.png',
-  twitterHandle: '@LegendaryOne',
+  title: "Legendary One | Empowering Connectivity Across Continents",
+  description:
+    "Legendary One provides industrial solutions, engineering, and technology services focused on innovation, performance and security.",
+  url: "https://legendaryone.in",
+  image: "/logos/logo512.png",
+  twitterHandle: "@LegendaryOne",
   organization: {
-    name: 'Legendary One',
-    email: 'legendaryoneff@gmail.com',
-    telephone: '+91 733 959 6165',
+    name: "Legendary One",
+    email: "legendaryoneff@gmail.com",
+    telephone: "+91 733 959 6165",
     address: {
-      streetAddress: '4, Eswaramoorthi Street, Kasipalayam',
-      addressLocality: 'Gobi, Erode',
-      addressCountry: 'India'
-    }
-  }
+      streetAddress: "4, Eswaramoorthi Street, Kasipalayam",
+      addressLocality: "Gobi, Erode",
+      addressCountry: "India",
+    },
+  },
 };
 
-export default function SEO({ title, description, pathname, image, noindex = false }) {
-  const metaTitle = title ? `${title} | Legendary One` : siteDefaults.title;
+export default function SEO({
+  title,
+  description,
+  pathname,
+  image,
+  noindex = false,
+}) {
+  const metaTitle = title || siteDefaults.title;
   const metaDesc = description || siteDefaults.description;
-  const metaUrl = pathname ? `${siteDefaults.url}${pathname}` : siteDefaults.url;
+  const metaUrl = pathname
+    ? `${siteDefaults.url}${pathname}`
+    : siteDefaults.url;
   const metaImage = image || siteDefaults.image;
 
   const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
+    "@context": "https://schema.org",
+    "@type": "Organization",
     name: siteDefaults.organization.name,
     url: siteDefaults.url,
     logo: `${siteDefaults.url}${siteDefaults.image}`,
     email: siteDefaults.organization.email,
     telephone: siteDefaults.organization.telephone,
     address: {
-      '@type': 'PostalAddress',
+      "@type": "PostalAddress",
       streetAddress: siteDefaults.organization.address.streetAddress,
       addressLocality: siteDefaults.organization.address.addressLocality,
-      addressCountry: siteDefaults.organization.address.addressCountry
-    }
+      addressCountry: siteDefaults.organization.address.addressCountry,
+    },
   };
 
   return (
     <Helmet>
       <title>{metaTitle}</title>
       <meta name="description" content={metaDesc} />
-      <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow'} />
+      <meta
+        name="robots"
+        content={noindex ? "noindex,follow" : "index,follow"}
+      />
       <link rel="canonical" href={metaUrl} />
 
       {/* Open Graph */}

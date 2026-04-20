@@ -1,7 +1,7 @@
 import React from "react";
 import SEO from "../components/SEO";
 
-const Contact = () => {
+const Contact = ({ hideSEO = false }) => {
   const [fields, setFields] = React.useState({
     name: "",
     email: "",
@@ -102,21 +102,23 @@ const Contact = () => {
       color: "from-llime to-green-400",
     },
     {
-      icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
-      label: "Office",
-      value: "Erode, India",
-      href: null,
-      color: "from-chart to-lime-300",
+      icon: "M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.991 22 12c0-5.523-4.477-10-10-10z",
+      label: "Instagram",
+      value: "@legendaryonehub",
+      href: "https://instagram.com/legendaryonehub",
+      color: "from-pink-500 to-rose-400",
     },
   ];
 
   return (
     <>
-      <SEO
-        title="Contact — Legendary One"
-        description="Get in touch with Legendary One for web, mobile, and technical solutions."
-        pathname="/contact"
-      />
+      {!hideSEO && (
+        <SEO
+          title="Contact | Legendary One"
+          description="Get in touch with Legendary One for web, mobile, and technical solutions."
+          pathname="/contact"
+        />
+      )}
 
       <section id="contact" className="py-28 bg-white relative overflow-hidden">
         {/* Top gradient border */}
@@ -154,85 +156,10 @@ const Contact = () => {
             hours.
           </p>
 
-          <div className="grid lg:grid-cols-5 gap-12">
-            {/* Info cards */}
-            <div className="lg:col-span-2 flex flex-col gap-6">
-              {infoItems.map((item, i) => (
-                <div
-                  key={item.label}
-                  className="group relative"
-                  data-aos="fade-right"
-                  data-aos-delay={i * 80}
-                >
-                  <div
-                    className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 rounded-2xl pointer-events-none"
-                    style={{
-                      backgroundImage: `linear-gradient(135deg, var(--tw-gradient-stops))`,
-                    }}
-                  ></div>
-                  <div className="relative bg-gradient-to-br from-white to-slate-50 rounded-2xl p-6 border border-slate-200 shadow-card hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 group-hover:border-azure/30 group-hover:bg-blue-50/40 group-hover:from-white group-hover:to-blue-50 group-hover:shadow-[0_20px_40px_rgba(0,123,255,0.1)]">
-                    <div className="flex items-start gap-4">
-                      <div
-                        className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                      >
-                        <svg
-                          className="w-6 h-6 text-white"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d={item.icon}
-                          />
-                        </svg>
-                      </div>
-                      <div className="flex-1">
-                        <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
-                          {item.label}
-                        </p>
-                        <div className="w-8 h-0.5 bg-gradient-to-r from-azure to-llime rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-2"></div>
-                        {item.href ? (
-                          <a
-                            href={item.href}
-                            className="text-sm text-navy font-semibold group-hover:text-azure transition-colors duration-300 inline-flex items-center gap-2"
-                          >
-                            {item.value}
-                            <svg
-                              className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M13 7l5 5m0 0l-5 5m5-5H6"
-                              />
-                            </svg>
-                          </a>
-                        ) : (
-                          <p className="text-sm text-slate-700 font-semibold">
-                            {item.value}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Form */}
-            <div
-              className="lg:col-span-3"
-              data-aos="fade-left"
-              data-aos-delay="100"
-            >
-              <div className="relative">
+          <div className="flex flex-col gap-12">
+            {/* Form - on top */}
+            <div data-aos="fade-up" data-aos-delay="100">
+              <div className="relative max-w-3xl mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-br from-azure/15 via-transparent to-llime/15 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 <div className="relative bg-gradient-to-br from-white via-slate-50/80 to-blue-50/40 rounded-3xl p-8 border-2 border-slate-200 shadow-card backdrop-blur-sm">
                   {submitted ? (
@@ -520,6 +447,77 @@ const Contact = () => {
                   )}
                 </div>
               </div>
+            </div>
+
+            {/* Info cards - below form */}
+            <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto w-full">
+              {infoItems.map((item, i) => (
+                <div
+                  key={item.label}
+                  className="group relative"
+                  data-aos="fade-up"
+                  data-aos-delay={i * 80}
+                >
+                  <div
+                    className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 rounded-2xl pointer-events-none"
+                    style={{
+                      backgroundImage: `linear-gradient(135deg, var(--tw-gradient-stops))`,
+                    }}
+                  ></div>
+                  <div className="relative bg-gradient-to-br from-white to-slate-50 rounded-2xl p-6 border border-slate-200 shadow-card hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 group-hover:border-azure/30 group-hover:bg-blue-50/40 group-hover:from-white group-hover:to-blue-50 group-hover:shadow-[0_20px_40px_rgba(0,123,255,0.1)]">
+                    <div className="flex items-start gap-4">
+                      <div
+                        className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                      >
+                        <svg
+                          className="w-6 h-6 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d={item.icon}
+                          />
+                        </svg>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+                          {item.label}
+                        </p>
+                        <div className="w-8 h-0.5 bg-gradient-to-r from-azure to-llime rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-2"></div>
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            className="text-sm text-navy font-semibold group-hover:text-azure transition-colors duration-300 inline-flex items-center gap-2"
+                          >
+                            {item.value}
+                            <svg
+                              className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M13 7l5 5m0 0l-5 5m5-5H6"
+                              />
+                            </svg>
+                          </a>
+                        ) : (
+                          <p className="text-sm text-slate-700 font-semibold">
+                            {item.value}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

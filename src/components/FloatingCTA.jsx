@@ -69,8 +69,8 @@ const FloatingCTA = () => {
 
   return (
     <>
-      {/* Vertical tab button on left side */}
-      <div className="fixed left-0 top-1/2 -translate-y-1/2 z-[1100] flex items-center">
+      {/* Vertical tab button on left side - hidden on mobile */}
+      <div className="hidden md:flex fixed left-0 top-1/2 -translate-y-1/2 z-[1100] items-center">
         <button
           onClick={() => setOpen((o) => !o)}
           className={`flex flex-col items-center gap-1.5 px-2 py-4 text-white font-black text-[10px] tracking-widest uppercase rounded-r-xl shadow-xl transition-all duration-200 ${
