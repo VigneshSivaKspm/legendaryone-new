@@ -7,24 +7,28 @@ const WHATSAPP_TEXT = encodeURIComponent(
 
 const QUICK_SUGGESTIONS = [
   {
-    label: "🌐 Services offered",
+    label: "🌐 What services do you offer?",
     msg: "What IT services does Legendary One provide?",
   },
   {
-    label: "💰 Project pricing",
-    msg: "What is the approximate cost for a web or mobile app project?",
+    label: "🗂️ Show me previous projects",
+    msg: "Can you share some of your previous project links and portfolio?",
   },
   {
-    label: "📱 Mobile app dev",
-    msg: "Tell me about your mobile app development capabilities.",
+    label: "💰 How much does a website cost?",
+    msg: "What is the approximate cost for building a website or mobile app?",
   },
   {
-    label: "🎓 College projects",
-    msg: "Do you help with college final year projects?",
+    label: "🎓 Help with college project",
+    msg: "Do you help with college final year projects? What do you provide?",
   },
   {
-    label: "🚀 How fast delivery?",
-    msg: "What are your typical project timelines?",
+    label: "📍 Where are you located?",
+    msg: "Where is Legendary One located and do you work with international clients?",
+  },
+  {
+    label: "🚀 How fast can you deliver?",
+    msg: "What are your typical project timelines and how do you ensure on-time delivery?",
   },
 ];
 
@@ -189,7 +193,7 @@ const ChatBot = () => {
     const greeting = {
       id: "init",
       role: "bot",
-      text: "👋 Hey there! I'm **Leo**, Legendary One's AI assistant!\n\nI'm here to help you discover the perfect IT solution — websites, apps, software, cloud, and more. What can we build for you today? 🚀",
+      text: "👋 Hey! I'm **Leo**, your AI guide to Legendary One!\n\nWe build websites, mobile apps, software, e-commerce stores, and much more — for startups, businesses, and students across India & globally. 🌍\n\nHow can I help you today?",
       time: new Date(),
       showWhatsApp: false,
     };
