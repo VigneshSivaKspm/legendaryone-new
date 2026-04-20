@@ -21,6 +21,7 @@ const Footer = () => {
     { label: "Reviews", href: "/leadership" },
     { label: "Why Us", href: "/why" },
     { label: "Contact", href: "/contact" },
+    { label: "Privacy Policy", href: "/privacy" },
   ];
 
   const socials = [

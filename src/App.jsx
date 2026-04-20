@@ -15,6 +15,7 @@ import Technologies from "./pages/Technologies";
 import Industries from "./pages/Industries";
 import WhyLegendaryOne from "./pages/WhyPrimetel";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import SoftwareDevelopment from "./pages/services/SoftwareDevelopment";
 import WebDevelopment from "./pages/services/WebDevelopment";
 import Branding from "./pages/services/Branding";
@@ -92,6 +93,7 @@ function App() {
         <Route path="/why" element={<WhyLegendaryOne />} />
         <Route path="/why-legendary" element={<WhyLegendaryOne />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
       </Routes>
       <Footer />
       <LeadCapturePopup />
