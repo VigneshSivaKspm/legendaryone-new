@@ -5,6 +5,7 @@ const Contact = ({ hideSEO = false }) => {
   const [fields, setFields] = React.useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
   const [focusedField, setFocusedField] = React.useState(null);
@@ -40,18 +41,13 @@ const Contact = ({ hideSEO = false }) => {
       return;
     }
 
-    if (!fields.message.trim()) {
-      setError("Please enter your message");
+    if (!fields.phone.trim()) {
+      setError("Please enter your phone number");
       return;
     }
 
-    if (fields.message.trim().length < 10) {
-      setError("Message must be at least 10 characters long");
-      return;
-    }
-
-    if (fields.message.length > 500) {
-      setError("Message must be under 500 characters");
+    if (fields.message.length > 2000) {
+      setError("Message is too long");
       return;
     }
 
@@ -299,6 +295,51 @@ const Contact = ({ hideSEO = false }) => {
                         </div>
                       </div>
 
+                      {/* Phone field */}
+                      <div className="relative">
+                        <label
+                          className={`block text-xs font-bold uppercase tracking-wider mb-3 transition-all duration-200 ${
+                            focusedField === "phone" || fields.phone
+                              ? "text-azure"
+                              : "text-slate-600"
+                          }`}
+                        >
+                          Phone Number
+                        </label>
+                        <div
+                          className={`relative border-2 rounded-xl transition-all duration-300 ${
+                            focusedField === "phone"
+                              ? "border-azure bg-white shadow-lg shadow-azure/20"
+                              : "border-slate-200 bg-slate-50/50 hover:border-slate-300"
+                          }`}
+                        >
+                          <svg
+                            className="absolute left-3.5 top-3.5 w-5 h-5 text-slate-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                            />
+                          </svg>
+                          <input
+                            type="tel"
+                            name="phone"
+                            required
+                            value={fields.phone}
+                            onChange={handleChange}
+                            onFocus={handleFocus}
+                            onBlur={handleBlur}
+                            placeholder="+91 7339596165"
+                            className="w-full pl-11 pr-4 py-3 bg-transparent text-navy placeholder-slate-400 text-sm focus:outline-none font-medium"
+                          />
+                        </div>
+                      </div>
+
                       {/* Message field */}
                       <div className="relative">
                         <div className="flex items-center justify-between mb-3">
@@ -312,7 +353,7 @@ const Contact = ({ hideSEO = false }) => {
                             Your Message
                           </label>
                           <span className="text-xs text-slate-500">
-                            {fields.message.length}/500
+                            {fields.message.length}/2000
                           </span>
                         </div>
                         <div
@@ -337,13 +378,12 @@ const Contact = ({ hideSEO = false }) => {
                           </svg>
                           <textarea
                             name="message"
-                            required
                             value={fields.message}
                             onChange={handleChange}
                             onFocus={handleFocus}
                             onBlur={handleBlur}
-                            maxLength={500}
-                            placeholder="Tell us about your project, timeline, and budget..."
+                            maxLength={2000}
+                            placeholder="Tell us about your project, timeline, and budget... (optional)"
                             rows={5}
                             className="w-full pl-11 pr-4 py-3 bg-transparent text-navy placeholder-slate-400 text-sm focus:outline-none font-medium resize-none"
                           />
