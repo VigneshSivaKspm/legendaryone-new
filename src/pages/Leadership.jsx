@@ -25,36 +25,59 @@ const Leadership = () => {
 
   useEffect(() => {
     if (!GOOGLE_API_KEY || !GOOGLE_PLACE_ID) return;
-    const loadScript = () => {
-      if (window.google?.maps?.places) {
-        fetchReviews();
-        return;
-      }
-      const s = document.createElement("script");
-      s.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&libraries=places`;
-      s.async = s.defer = true;
-      s.onload = fetchReviews;
-      document.head.appendChild(s);
-    };
-    const fetchReviews = () => {
+
+    let cancelled = false;
+
+    const fetchReviews = async () => {
       try {
-        const div = document.createElement("div");
-        new window.google.maps.places.PlacesService(div).getDetails(
-          { placeId: GOOGLE_PLACE_ID, fields: ["reviews"] },
-          (place, status) => {
-            if (
-              status === window.google.maps.places.PlacesServiceStatus.OK &&
-              place?.reviews
-            ) {
-              setReviews(place.reviews);
-            }
-          },
-        );
+        const place = new window.google.maps.places.Place({
+          id: GOOGLE_PLACE_ID,
+        });
+        await place.fetchFields({ fields: ["reviews"] });
+        if (!cancelled && place.reviews?.length) {
+          setReviews(place.reviews);
+        }
       } catch (e) {
         console.warn("Google Reviews error", e);
       }
     };
-    loadScript();
+
+    const SCRIPT_ID = "gmap-places-script";
+
+    const runWhenReady = () => {
+      if (window.google?.maps?.places?.Place) {
+        fetchReviews();
+      }
+    };
+
+    // Already loaded
+    if (window.google?.maps?.places?.Place) {
+      fetchReviews();
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    // Script already appended (handles StrictMode double-invoke)
+    if (document.getElementById(SCRIPT_ID)) {
+      const existing = document.getElementById(SCRIPT_ID);
+      existing.addEventListener("load", runWhenReady, { once: true });
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    const s = document.createElement("script");
+    s.id = SCRIPT_ID;
+    s.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&libraries=places&loading=async`;
+    s.async = true;
+    s.defer = true;
+    s.onload = runWhenReady;
+    document.head.appendChild(s);
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (
@@ -133,17 +156,23 @@ const Leadership = () => {
                   data-aos-delay={i * 60}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <img
-                      src={r.profile_photo_url}
-                      alt={r.author_name}
-                      className="w-10 h-10 rounded-full object-cover"
-                    />
+                    {r.authorPhotoURI ? (
+                      <img
+                        src={r.authorPhotoURI}
+                        alt={r.authorAttribution?.displayName ?? "Reviewer"}
+                        className="w-10 h-10 rounded-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-azure to-llime flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                        {(r.authorAttribution?.displayName ?? "?").charAt(0)}
+                      </div>
+                    )}
                     <div>
                       <p className="font-bold text-sm text-navy">
-                        {r.author_name}
+                        {r.authorAttribution?.displayName ?? "Google Reviewer"}
                       </p>
                       <p className="text-xs text-slate-400">
-                        {r.relative_time_description}
+                        {r.relativePublishTimeDescription ?? ""}
                       </p>
                     </div>
                   </div>

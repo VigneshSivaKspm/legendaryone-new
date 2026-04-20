@@ -51,10 +51,7 @@ const LeadCapturePopup = () => {
     const handleScroll = () => {
       const scrollPct =
         (window.scrollY /
-          Math.max(
-            1,
-            document.body.scrollHeight - window.innerHeight
-          )) *
+          Math.max(1, document.body.scrollHeight - window.innerHeight)) *
         100;
       if (scrollPct > 65) show();
     };
@@ -106,7 +103,9 @@ const LeadCapturePopup = () => {
       if (!res.ok) throw new Error("Submission failed");
       setSubmitted(true);
     } catch {
-      setError("Something went wrong. Please try again or contact us directly.");
+      setError(
+        "Something went wrong. Please try again or contact us directly.",
+      );
     } finally {
       setSubmitting(false);
     }
@@ -124,7 +123,9 @@ const LeadCapturePopup = () => {
     >
       <div
         className="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden"
-        style={{ animation: "popupSlideIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both" }}
+        style={{
+          animation: "popupSlideIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both",
+        }}
       >
         {/* Top gradient accent */}
         <div className="h-1.5 bg-gradient-to-r from-azure via-llime to-chart" />
@@ -135,8 +136,18 @@ const LeadCapturePopup = () => {
           className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors z-10"
           aria-label="Close popup"
         >
-          <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+          <svg
+            className="w-4 h-4 text-slate-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2.5}
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
 
@@ -144,14 +155,27 @@ const LeadCapturePopup = () => {
           {submitted ? (
             <div className="text-center py-6">
               <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-8 h-8 text-green-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2.5}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
-              <h3 className="text-2xl font-black text-navy mb-2">You're All Set!</h3>
+              <h3 className="text-2xl font-black text-navy mb-2">
+                You're All Set!
+              </h3>
               <p className="text-slate-500 text-sm leading-relaxed max-w-xs mx-auto">
                 Our team will review your request and get back to you within{" "}
-                <strong className="text-navy">24 hours</strong> with a custom plan.
+                <strong className="text-navy">24 hours</strong> with a custom
+                plan.
               </p>
               <div className="mt-4 flex items-center justify-center gap-4 text-xs text-slate-400">
                 <span>✓ No spam</span>
@@ -195,7 +219,8 @@ const LeadCapturePopup = () => {
                 </span>
                 <span className="w-px h-4 bg-slate-200" />
                 <span className="flex items-center gap-1">
-                  <span className="font-black text-navy">100%</span> Satisfaction
+                  <span className="font-black text-navy">100%</span>{" "}
+                  Satisfaction
                 </span>
                 <span className="w-px h-4 bg-slate-200" />
                 <span className="flex items-center gap-1">
@@ -282,9 +307,24 @@ const LeadCapturePopup = () => {
                 >
                   {submitting ? (
                     <span className="flex items-center justify-center gap-2">
-                      <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                      <svg
+                        className="w-4 h-4 animate-spin"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v8z"
+                        />
                       </svg>
                       Sending...
                     </span>

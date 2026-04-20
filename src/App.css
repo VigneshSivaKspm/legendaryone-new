@@ -106,6 +106,40 @@ section {
   }
 }
 
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.mq-track {
+  animation: marqueeScroll 38s linear infinite;
+}
+.mq-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.toast-in {
+  animation: toastIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.toast-out {
+  opacity: 0;
+  transform: translateY(8px) scale(0.97);
+  transition: all 0.35s ease;
+}
+
 /* ─── Scrollbar ──────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;

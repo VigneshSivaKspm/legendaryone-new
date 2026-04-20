@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, NavLink as RouterNavLink, useLocation } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ announcementVisible = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
@@ -53,7 +53,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${announcementVisible ? "top-10" : "top-0"} ${
         scrolled
           ? "bg-white/96 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06),0_4px_20px_rgba(0,0,0,0.04)]"
           : "bg-white/80 backdrop-blur-md"
@@ -206,9 +206,29 @@ const Navbar = () => {
 
           <Link
             to="/contact"
-            className="ml-3 px-5 py-2 bg-azure text-white text-[13px] font-bold rounded-full shadow-azure-sm hover:bg-azure-dark hover:shadow-azure-md hover:-translate-y-0.5 transition-all duration-200"
+            className="ml-2 px-4 py-2 text-azure text-[13px] font-bold rounded-full border border-azure/30 hover:bg-azure/10 transition-all duration-200"
           >
-            Contact Us
+            Contact
+          </Link>
+
+          <Link
+            to="/contact"
+            className="ml-1 px-5 py-2 bg-gradient-to-r from-llime to-chart text-navy text-[13px] font-black rounded-full shadow-md hover:shadow-lg hover:shadow-llime/30 hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-1.5"
+          >
+            <svg
+              className="w-3.5 h-3.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
+            </svg>
+            Free Quote
           </Link>
         </div>
 
@@ -259,6 +279,25 @@ const Navbar = () => {
               className="mt-3 py-3 bg-azure text-white text-sm font-bold rounded-xl text-center shadow-azure-sm hover:bg-azure-dark transition-colors"
             >
               Contact Us
+            </Link>
+            <Link
+              to="/contact"
+              className="py-3 bg-gradient-to-r from-llime to-chart text-navy text-sm font-black rounded-xl text-center shadow-md hover:shadow-lg transition-colors flex items-center justify-center gap-2"
+            >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+              Get Free Quote
             </Link>
           </div>
         </div>

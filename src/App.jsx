@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -23,11 +23,26 @@ import "./App.css";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ChatBot from "./components/ChatBot";
+import AnnouncementBar from "./components/AnnouncementBar";
+import LeadCapturePopup from "./components/LeadCapturePopup";
+import FloatingCTA from "./components/FloatingCTA";
+import SocialProofToast from "./components/SocialProofToast";
+import StickyMobileCTA from "./components/StickyMobileCTA";
 
 function App() {
+  const [showAnnouncement, setShowAnnouncement] = useState(
+    () => !sessionStorage.getItem("announcement_dismissed"),
+  );
+
+  const dismissAnnouncement = () => {
+    sessionStorage.setItem("announcement_dismissed", "1");
+    setShowAnnouncement(false);
+  };
+
   return (
     <Router>
-      <Navbar />
+      {showAnnouncement && <AnnouncementBar onDismiss={dismissAnnouncement} />}
+      <Navbar announcementVisible={showAnnouncement} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -65,6 +80,10 @@ function App() {
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
+      <LeadCapturePopup />
+      <FloatingCTA />
+      <SocialProofToast />
+      <StickyMobileCTA />
       <ChatBot />
       <WhatsAppButton />
     </Router>

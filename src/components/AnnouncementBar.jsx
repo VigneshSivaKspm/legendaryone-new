@@ -9,9 +9,13 @@ const AnnouncementBar = ({ onDismiss }) => (
     </span>
 
     <div className="flex items-center gap-2 text-white text-xs font-medium flex-wrap justify-center">
-      <span className="text-llime font-bold hidden sm:inline">🚀 Limited Offer:</span>
+      <span className="text-llime font-bold hidden sm:inline">
+        🚀 Limited Offer:
+      </span>
       <span>Free Discovery Call for New Projects —</span>
-      <span className="font-bold text-white">Limited Spots Available This Month!</span>
+      <span className="font-bold text-white">
+        Limited Spots Available This Month!
+      </span>
       <Link
         to="/contact"
         onClick={onDismiss}
@@ -27,8 +31,18 @@ const AnnouncementBar = ({ onDismiss }) => (
       className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white/10 hover:bg-white/25 text-white/80 hover:text-white flex items-center justify-center transition-colors"
       aria-label="Dismiss announcement"
     >
-      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+      <svg
+        className="w-3 h-3"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2.5}
+          d="M6 18L18 6M6 6l12 12"
+        />
       </svg>
     </button>
   </div>

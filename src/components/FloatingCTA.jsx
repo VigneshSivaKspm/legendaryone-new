@@ -31,9 +31,15 @@ const FloatingCTA = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-    if (!fields.name.trim()) { setError("Please enter your name."); return; }
+    if (!fields.name.trim()) {
+      setError("Please enter your name.");
+      return;
+    }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(fields.email.trim())) { setError("Enter a valid email."); return; }
+    if (!emailRegex.test(fields.email.trim())) {
+      setError("Enter a valid email.");
+      return;
+    }
 
     setSubmitting(true);
     try {
@@ -75,17 +81,41 @@ const FloatingCTA = () => {
           aria-label="Get a free quote"
         >
           {open ? (
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           ) : (
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+              />
             </svg>
           )}
           {/* Vertical text */}
           <span
-            style={{ writingMode: "vertical-rl", textOrientation: "mixed", transform: "rotate(180deg)" }}
+            style={{
+              writingMode: "vertical-rl",
+              textOrientation: "mixed",
+              transform: "rotate(180deg)",
+            }}
             className="leading-none"
           >
             {open ? "Close" : "Free Quote"}
@@ -95,7 +125,9 @@ const FloatingCTA = () => {
         {/* Slide-out panel */}
         <div
           className={`bg-white rounded-r-2xl shadow-2xl border border-slate-100 transition-all duration-300 overflow-hidden ${
-            open ? "w-72 max-h-screen opacity-100" : "w-0 max-h-0 opacity-0 pointer-events-none"
+            open
+              ? "w-72 max-h-screen opacity-100"
+              : "w-0 max-h-0 opacity-0 pointer-events-none"
           }`}
         >
           <div className="w-72 p-5">
@@ -105,14 +137,32 @@ const FloatingCTA = () => {
             {submitted ? (
               <div className="text-center py-4">
                 <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  <svg
+                    className="w-6 h-6 text-green-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.5}
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 </div>
-                <h3 className="text-base font-black text-navy mb-1">Request Received!</h3>
-                <p className="text-xs text-slate-500">We'll contact you within 24 hours.</p>
+                <h3 className="text-base font-black text-navy mb-1">
+                  Request Received!
+                </h3>
+                <p className="text-xs text-slate-500">
+                  We'll contact you within 24 hours.
+                </p>
                 <button
-                  onClick={() => { setOpen(false); setSubmitted(false); setFields({ name: "", email: "", phone: "", service: "" }); }}
+                  onClick={() => {
+                    setOpen(false);
+                    setSubmitted(false);
+                    setFields({ name: "", email: "", phone: "", service: "" });
+                  }}
                   className="mt-4 px-4 py-1.5 bg-navy text-white rounded-full text-xs font-bold hover:bg-azure transition-colors"
                 >
                   Close
@@ -120,8 +170,12 @@ const FloatingCTA = () => {
               </div>
             ) : (
               <>
-                <h3 className="text-base font-black text-navy mb-0.5">Get a Free Quote</h3>
-                <p className="text-xs text-slate-500 mb-4">Quick 2-min form. We'll get back to you today.</p>
+                <h3 className="text-base font-black text-navy mb-0.5">
+                  Get a Free Quote
+                </h3>
+                <p className="text-xs text-slate-500 mb-4">
+                  Quick 2-min form. We'll get back to you today.
+                </p>
 
                 {error && (
                   <p className="mb-3 text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
@@ -129,7 +183,11 @@ const FloatingCTA = () => {
                   </p>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-2.5" noValidate>
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-2.5"
+                  noValidate
+                >
                   <input
                     type="text"
                     name="name"
@@ -168,7 +226,9 @@ const FloatingCTA = () => {
                   >
                     <option value="">Service needed...</option>
                     {SERVICES.map((s) => (
-                      <option key={s} value={s}>{s}</option>
+                      <option key={s} value={s}>
+                        {s}
+                      </option>
                     ))}
                   </select>
                   <button
@@ -179,7 +239,9 @@ const FloatingCTA = () => {
                     {submitting ? "Sending..." : "Send Request →"}
                   </button>
                 </form>
-                <p className="text-center text-[10px] text-slate-400 mt-2">🔒 No spam. 100% free.</p>
+                <p className="text-center text-[10px] text-slate-400 mt-2">
+                  🔒 No spam. 100% free.
+                </p>
               </>
             )}
           </div>
