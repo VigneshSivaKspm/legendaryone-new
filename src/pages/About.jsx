@@ -62,9 +62,10 @@ const About = ({ hideSEO = false }) => {
     <>
       {!hideSEO && (
         <SEO
-          title="About Legendary One"
-          description="Learn about Legendary One — our mission, values, and team."
+          title="About Us | India's Premier Web & App Development Agency — Legendary One"
+          description="Meet the team behind Legendary One — passionate senior engineers & designers from Erode, Tamil Nadu delivering world-class digital solutions globally. 5+ years of excellence, 100+ projects delivered across web, mobile, and software development."
           pathname="/about"
+          keywords="about Legendary One, web development agency India, IT company Erode Tamil Nadu, software development team India, who is Legendary One"
         />
       )}
 

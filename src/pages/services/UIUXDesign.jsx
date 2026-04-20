@@ -18,9 +18,15 @@ const UIUXDesign = () => {
   return (
     <>
       <SEO
-        title="UI/UX Design — Legendary One"
-        description="Human-centered design that blends aesthetic appeal with exceptional usability."
+        title="UI/UX Design Services | User-Centered Digital Design — Legendary One"
+        description="Professional UI/UX design services that turn visitors into customers. We craft intuitive, beautiful interfaces for web & mobile apps using Figma. Services include wireframing, prototyping, design systems & usability testing."
         pathname="/services/ui-ux-design"
+        keywords="UI UX design services India, user interface design, user experience design, Figma design agency, web app UI design, mobile app UX, product design India"
+        breadcrumbs={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: "UI/UX Design", path: "/services/ui-ux-design" },
+        ]}
       />
 
       <section className="relative pt-28 pb-20 bg-white overflow-hidden">

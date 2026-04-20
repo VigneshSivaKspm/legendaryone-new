@@ -134,9 +134,10 @@ const Technologies = ({ hideSEO = false }) => {
     <>
       {!hideSEO && (
         <SEO
-          title="Technologies | Legendary One"
-          description="Our comprehensive modern tech stack."
+          title="Technologies & Tech Stack | React, Node.js, Flutter, AWS & More — Legendary One"
+          description="Legendary One masters 30+ modern technologies: React, Next.js, Node.js, Python, Flutter, React Native, AWS, Firebase, Docker, MongoDB, PostgreSQL, TypeScript, Shopify & more. We use the right tech for maximum performance."
           pathname="/technologies"
+          keywords="React development, Next.js, Node.js, Flutter, React Native, AWS, Firebase, MongoDB, Python, TypeScript, Shopify, WordPress, Docker, Kubernetes, web technologies India"
         />
       )}
 

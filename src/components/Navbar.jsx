@@ -75,35 +75,28 @@ const Navbar = ({ announcementVisible = false }) => {
           </span>
         </Link>
 
+        {/* Portfolio nav link - Always Visible */}
+        <RouterNavLink
+          to="/projects"
+          className={({ isActive }) =>
+            `flex flex-col items-center px-4 sm:px-5 py-2.5 rounded-xl transition-all duration-200 border-2 bg-llime/35 border-llime/60 hover:bg-llime/45 ${
+              isActive
+                ? "shadow-[0_0_20px_rgba(200,240,120,0.3)]"
+                : "hover:shadow-[0_0_20px_rgba(200,240,120,0.3)]"
+            }`
+          }
+        >
+          <span className="text-[11px] sm:text-[13px] font-bold text-navy hover:text-navy leading-tight">
+            Work We
+          </span>
+          <span className="hidden sm:block text-[9px] font-semibold text-navy/70 hover:text-navy/70 leading-tight">
+            Proud Of
+          </span>
+        </RouterNavLink>
+
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-0.5" ref={dropdownRef}>
           <NavItem to="/">Home</NavItem>
-
-          {/* Portfolio nav link - Prominent */}
-          <div
-            className="relative"
-            onMouseEnter={() => enter("portfolio")}
-            onMouseLeave={() => leave("portfolio")}
-          >
-            <RouterNavLink
-              to="/projects"
-              className={({ isActive }) =>
-                `flex flex-col items-center px-5 py-2.5 rounded-xl transition-all duration-200 border-2 bg-llime/35 border-llime/60 hover:bg-llime/45 ${
-                  isActive
-                    ? "shadow-[0_0_20px_rgba(200,240,120,0.3)]"
-                    : "hover:shadow-[0_0_20px_rgba(200,240,120,0.3)]"
-                }`
-              }
-            >
-              <span className="text-[13px] font-bold text-navy hover:text-navy leading-tight">
-                Our Portfolio
-              </span>
-              <span className="text-[9px] font-semibold text-navy/70 hover:text-navy/70 leading-tight">
-                ✨ Work We're Proud Of
-              </span>
-            </RouterNavLink>
-          </div>
-
           <NavItem to="/about">About</NavItem>
 
           {/* Services dropdown */}
@@ -235,7 +228,7 @@ const Navbar = ({ announcementVisible = false }) => {
         {/* Mobile hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-gray-100 transition-colors"
+          className="sm:hidden p-2 rounded-lg text-slate-700 hover:bg-gray-100 transition-colors"
           aria-label="Toggle menu"
         >
           <div className="w-5 flex flex-col gap-[5px]">
@@ -254,13 +247,12 @@ const Navbar = ({ announcementVisible = false }) => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 shadow-xl">
+        <div className="sm:hidden bg-white border-t border-gray-100 shadow-xl">
           <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
             {[
               ["/", "Home"],
               ["/about", "About"],
               ["/services", "Services"],
-              ["/projects", "Our Portfolio"],
               ["/technologies", "Tech Stack"],
               ["/leadership", "Reviews"],
               ["/industries", "Industries"],

@@ -15,9 +15,15 @@ const WebDevelopment = () => {
   return (
     <>
       <SEO
-        title="Web Development — Legendary One"
-        description="Responsive, dynamic websites and web applications with cutting-edge technologies."
+        title="Web Development Services | Custom Websites & Web Apps — Legendary One"
+        description="Professional web development services in India. We build blazing-fast, responsive, SEO-optimized websites and web applications using React, Next.js, Vue.js & modern stacks. Custom design, no templates. Free consultation available."
         pathname="/services/web-development"
+        keywords="web development services India, custom website development, React web app development, Next.js development, responsive website design India, hire web developer"
+        breadcrumbs={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: "Web Development", path: "/services/web-development" },
+        ]}
       />
 
       <section className="relative pt-28 pb-20 bg-white overflow-hidden">

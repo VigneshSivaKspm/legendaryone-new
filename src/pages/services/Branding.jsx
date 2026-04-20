@@ -15,9 +15,15 @@ const Branding = () => {
   return (
     <>
       <SEO
-        title="Branding — Legendary One"
-        description="Comprehensive branding solutions: identity systems, multimedia editing, and visual storytelling."
+        title="Branding & Identity Design | Logo, Brand Strategy — Legendary One"
+        description="Complete branding solutions by Legendary One: logo design, brand identity systems, brand strategy, visual design, social media graphics & multimedia editing. Build a brand your customers love and remember."
         pathname="/services/branding"
+        keywords="branding services India, logo design, brand identity design, visual identity, brand strategy India, graphic design, social media design, multimedia editing"
+        breadcrumbs={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: "Branding", path: "/services/branding" },
+        ]}
       />
 
       <section className="relative pt-28 pb-20 bg-white overflow-hidden">

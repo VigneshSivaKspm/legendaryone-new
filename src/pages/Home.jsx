@@ -60,10 +60,12 @@ const Home = () => {
   return (
     <>
       <SEO
-        title="Legendary One | Where Innovation Meets Excellence"
-        description="Legendary One builds modern web and mobile applications, delivering scalable and secure digital experiences for businesses."
+        title="Legendary One | #1 Web & Mobile App Development Agency in India"
+        description="Legendary One is India's top-rated IT agency. We build custom websites, React apps, e-commerce stores, iOS & Android apps, SaaS products & iconic brand identities. 5+ years excellence, 100+ projects delivered, 100% client satisfaction. Get a FREE consultation today!"
         pathname="/"
         image="/logos/logo512.png"
+        pageType="home"
+        keywords="web development company India, mobile app development agency, React development India, custom software development, e-commerce development, UI UX design agency India, web design agency Tamil Nadu, Legendary One, IT company Erode, hire web developer India"
       />
       <main>
         {/* ─── Hero ─────────────────────────────────────────── */}

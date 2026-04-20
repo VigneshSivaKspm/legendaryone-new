@@ -27,9 +27,18 @@ const EcommerceSolutions = () => {
   return (
     <>
       <SEO
-        title="E-commerce Solutions — Legendary One"
-        description="Scalable e-commerce platforms designed to maximize conversions and customer experience."
+        title="E-commerce Development | Online Store Solutions — Legendary One"
+        description="Custom e-commerce development by Legendary One: Shopify, WooCommerce & fully custom React stores built to maximize conversions. Payment integration, inventory management, mobile-first design & SEO-optimized. Launch your store today."
         pathname="/services/ecommerce-solutions"
+        keywords="e-commerce development India, Shopify development, WooCommerce development, online store development India, custom e-commerce store, e-commerce website India, Shopify agency"
+        breadcrumbs={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          {
+            name: "E-commerce Solutions",
+            path: "/services/ecommerce-solutions",
+          },
+        ]}
       />
 
       <section className="relative pt-28 pb-20 bg-white overflow-hidden">

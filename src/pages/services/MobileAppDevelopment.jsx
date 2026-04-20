@@ -27,9 +27,18 @@ const MobileAppDevelopment = () => {
   return (
     <>
       <SEO
-        title="Mobile App Development — Legendary One"
-        description="High-performance iOS and Android applications built with modern cross-platform stacks."
+        title="Mobile App Development | iOS & Android Apps — Legendary One"
+        description="Professional iOS & Android mobile app development services. We build cross-platform React Native and Flutter apps with stunning UI, fast performance & seamless UX. From concept to App Store launch. Free app consultation."
         pathname="/services/mobile-app-development"
+        keywords="mobile app development India, iOS app development, Android app development, React Native development, Flutter development, cross-platform apps India, hire app developer"
+        breadcrumbs={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          {
+            name: "Mobile App Development",
+            path: "/services/mobile-app-development",
+          },
+        ]}
       />
 
       <section className="relative pt-28 pb-20 bg-white overflow-hidden">

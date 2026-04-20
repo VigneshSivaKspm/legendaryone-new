@@ -1,4 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
-Sitemap: https://primetalsolutionsfze.com/sitemap.xml
+
+# Disallow server-side API routes from being indexed
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://legendaryone.in/sitemap.xml

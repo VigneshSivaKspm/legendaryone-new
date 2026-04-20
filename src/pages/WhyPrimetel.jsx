@@ -72,10 +72,11 @@ const WhyLegendaryOne = ({ hideSEO = false }) => {
     <>
       {!hideSEO && (
         <SEO
-          title="Why Choose Legendary One"
-          description="Discover why top teams choose Legendary One for secure, scalable and cost-effective digital solutions tailored to business needs."
+          title="Why Choose Legendary One | India's Most Trusted IT Agency"
+          description="Why Legendary One? 2–6 week turnaround guaranteed, senior engineers on every project, 100% custom designs (no templates), transparent fixed pricing, 30-day free post-launch support, and 100+ happy clients. Discover what sets us apart."
           pathname="/why"
           image="/logos/logo512.png"
+          keywords="why choose Legendary One, best IT agency India, reliable web development company, affordable software development India, trusted web agency, fast website development"
         />
       )}
       <section

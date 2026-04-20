@@ -30,9 +30,18 @@ const TechnicalSolutions = () => {
   return (
     <>
       <SEO
-        title="Technical Solutions — Legendary One"
-        description="Expert technical solutions to streamline operations and drive digital transformation."
+        title="Technical Solutions & IT Consulting | Digital Transformation — Legendary One"
+        description="Expert technical consulting & IT solutions to streamline your business. We offer digital transformation, system integration, API development, database optimization, performance audits & technical architecture consulting for SMEs and enterprises."
         pathname="/services/technical-solutions"
+        keywords="IT consulting India, technical solutions agency, digital transformation India, system integration, API development, database optimization, performance audit, IT consulting Erode Tamil Nadu"
+        breadcrumbs={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          {
+            name: "Technical Solutions",
+            path: "/services/technical-solutions",
+          },
+        ]}
       />
 
       <section className="relative pt-28 pb-20 bg-white overflow-hidden">

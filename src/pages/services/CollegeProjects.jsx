@@ -27,9 +27,15 @@ const CollegeProjects = () => {
   return (
     <>
       <SEO
-        title="College Projects — Legendary One"
-        description="Guidance and technical support for innovative student projects and academic excellence."
+        title="College Project Help | Final Year Projects, IEEE Projects — Legendary One"
+        description="Professional college & final year project development. IEEE projects, B.Tech, BCA, MCA, MBA student projects: web apps, mobile apps, AI/ML, data science, IoT & blockchain. Expert guidance from idea to submission. Get help today!"
         pathname="/services/college-projects"
+        keywords="college project help India, IEEE projects, final year project development, B.Tech projects, BCA projects, MCA projects, student web app project, AI ML projects students India"
+        breadcrumbs={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: "College Projects", path: "/services/college-projects" },
+        ]}
       />
 
       <section className="relative pt-28 pb-20 bg-white overflow-hidden">

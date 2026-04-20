@@ -75,9 +75,10 @@ const Services = ({ hideSEO = false }) => {
     <>
       {!hideSEO && (
         <SEO
-          title="Services | Legendary One"
-          description="Explore Legendary One's full suite of IT services."
+          title="IT Services | Web Development, Mobile Apps, Branding & More — Legendary One"
+          description="Explore Legendary One's complete IT service suite: custom web development, mobile app development, UI/UX design, branding, e-commerce development, cloud & DevOps, software development, technical solutions & college project support."
           pathname="/services"
+          keywords="IT services India, web development services, mobile app development services, UI UX design services India, branding services, e-commerce development, cloud DevOps India, software development agency"
         />
       )}
 

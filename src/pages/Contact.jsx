@@ -114,9 +114,10 @@ const Contact = ({ hideSEO = false }) => {
     <>
       {!hideSEO && (
         <SEO
-          title="Contact | Legendary One"
-          description="Get in touch with Legendary One for web, mobile, and technical solutions."
+          title="Contact Us | Free Project Consultation — Legendary One"
+          description="Contact Legendary One for a free project consultation. Call +91 7339596165, WhatsApp us, or fill the form. Based in Gobi, Erode, Tamil Nadu. We respond within 24 hours — no commitment, no cost, just results."
           pathname="/contact"
+          keywords="contact Legendary One, hire web developer India, IT agency contact Erode Tamil Nadu, free web development consultation, get website quote India, contact software agency"
         />
       )}
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import SEO from "../components/SEO";
 
 const projectsData = [
@@ -154,8 +154,6 @@ const projectsData = [
   },
 ];
 
-const CATEGORIES = ["All", "Websites", "Softwares", "Android Apps"];
-
 const statusColors = {
   Live: "bg-emerald-50 text-emerald-700 border-emerald-200",
   "In Development": "bg-blue-50 text-azure border-blue-200",
@@ -163,30 +161,17 @@ const statusColors = {
 };
 
 const Projects = ({ hideSEO = false }) => {
-  const [cat, setCat] = useState("All");
-  const [showAll, setShowAll] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  const filtered =
-    cat === "All"
-      ? projectsData
-      : projectsData.filter((p) => p.categories.includes(cat));
-  const shown = isMobile && !showAll ? filtered.slice(0, 3) : filtered;
+  // Always show all projects (no filtering)
+  const shown = projectsData;
 
   return (
     <>
       {!hideSEO && (
         <SEO
-          title="Projects | Legendary One"
-          description="Browse our portfolio of web, mobile, and software projects."
+          title="Portfolio | Web, Mobile & Software Projects — Legendary One"
+          description="Browse Legendary One's portfolio of 100+ successful projects: e-commerce stores, React web apps, Android apps, SaaS platforms, brand identities, and more delivered across India and globally. See our work live."
           pathname="/projects"
+          keywords="web development portfolio India, mobile app portfolio, React projects portfolio, e-commerce development portfolio, IT agency projects India, Legendary One work"
         />
       )}
 
@@ -206,7 +191,7 @@ const Projects = ({ hideSEO = false }) => {
           </div>
 
           <h2
-            className="text-center font-display font-black text-4xl sm:text-5xl text-navy mb-5 leading-tight"
+            className="text-center font-display font-black text-4xl text-navy mb-5 leading-tight"
             data-aos="fade-up"
             data-aos-delay="80"
           >
@@ -224,29 +209,7 @@ const Projects = ({ hideSEO = false }) => {
             and software development.
           </p>
 
-          {/* Category filter */}
-          <div
-            className="flex flex-wrap justify-center gap-2 mb-12"
-            data-aos="fade-up"
-            data-aos-delay="180"
-          >
-            {CATEGORIES.map((c) => (
-              <button
-                key={c}
-                onClick={() => {
-                  setCat(c);
-                  setShowAll(false);
-                }}
-                className={`px-5 py-2 text-sm font-semibold rounded-full border transition-all duration-200 ${
-                  cat === c
-                    ? "bg-gradient-to-r from-azure to-llime text-white border-transparent shadow-azure-sm"
-                    : "bg-white text-slate-600 border-gray-200 hover:border-azure hover:text-azure"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
+          {/* Category filter - REMOVED */}
 
           {/* Grid */}
           {shown.length === 0 ? (
@@ -342,17 +305,7 @@ const Projects = ({ hideSEO = false }) => {
             </div>
           )}
 
-          {/* Mobile see-all toggle */}
-          {isMobile && filtered.length > 3 && (
-            <div className="flex justify-center mt-10" data-aos="fade-up">
-              <button
-                onClick={() => setShowAll((p) => !p)}
-                className="px-7 py-3 bg-white border border-gray-200 text-sm font-bold text-navy rounded-full hover:border-azure hover:text-azure transition-all duration-200 shadow-card"
-              >
-                {showAll ? "Show Less" : `See All ${filtered.length} Projects`}
-              </button>
-            </div>
-          )}
+          {/* Mobile see-all toggle - REMOVED (showing all projects now) */}
         </div>
       </section>
     </>

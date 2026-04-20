@@ -84,9 +84,10 @@ const Leadership = ({ hideSEO = false }) => {
     <>
       {!hideSEO && (
         <SEO
-          title="Client Reviews | Legendary One"
-          description="Read client reviews for Legendary One."
+          title="Client Reviews & Testimonials | Legendary One"
+          description="Read genuine client reviews and testimonials for Legendary One. 100% satisfaction rate, 5-star Google reviews, 100+ happy clients across web development, mobile apps, e-commerce, and digital solutions. See why businesses trust us."
           pathname="/leadership"
+          keywords="Legendary One reviews, client testimonials, web development agency reviews India, Google reviews Legendary One, IT agency testimonials"
         />
       )}
 

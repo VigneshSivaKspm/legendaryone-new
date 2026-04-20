@@ -18,9 +18,18 @@ const SoftwareDevelopment = () => {
   return (
     <>
       <SEO
-        title="Software Development — Legendary One"
-        description="Custom software solutions engineered for performance, scalability, and business growth."
+        title="Custom Software Development | Enterprise & SaaS Solutions — Legendary One"
+        description="Custom software development services by Legendary One. We build scalable, secure enterprise applications, SaaS platforms, CRMs, ERPs & business automation tools. Trusted by 100+ businesses. Senior engineers, fixed pricing."
         pathname="/services/software-development"
+        keywords="custom software development India, enterprise software development, SaaS development, CRM development, ERP development, business automation software India"
+        breadcrumbs={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          {
+            name: "Software Development",
+            path: "/services/software-development",
+          },
+        ]}
       />
 
       <section className="relative pt-28 pb-20 bg-white overflow-hidden">

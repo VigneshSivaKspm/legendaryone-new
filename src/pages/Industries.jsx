@@ -56,9 +56,10 @@ const Industries = ({ hideSEO = false }) => (
   <>
     {!hideSEO && (
       <SEO
-        title="Industries | Legendary One"
-        description="Legendary One delivers tailored digital solutions across e-commerce, healthcare, education, manufacturing, and more."
+        title="Industries We Serve | E-commerce, Healthcare, Education & More — Legendary One"
+        description="Legendary One delivers industry-specific digital solutions for e-commerce, healthcare, education, manufacturing, real estate, hospitality, finance, logistics & more. Domain expertise that maximizes your ROI and accelerates growth."
         pathname="/industries"
+        keywords="IT solutions for e-commerce India, healthcare software development, education technology India, real estate web development, fintech solutions India, logistics software, hospitality digital solutions"
       />
     )}
 

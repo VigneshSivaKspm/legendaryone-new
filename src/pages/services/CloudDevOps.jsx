@@ -27,9 +27,15 @@ const CloudDevOps = () => {
   return (
     <>
       <SEO
-        title="Cloud & DevOps — Legendary One"
-        description="End-to-end DevOps solutions: CI/CD, infrastructure-as-code, and cloud optimization."
+        title="Cloud & DevOps Services | AWS, Docker, CI/CD Pipelines — Legendary One"
+        description="End-to-end cloud & DevOps services: AWS setup & migration, Docker containerization, Kubernetes orchestration, CI/CD pipelines, infrastructure-as-code & cloud cost optimization. Modern DevOps for high-growth businesses."
         pathname="/services/cloud-devops"
+        keywords="cloud services India, DevOps consulting, AWS deployment India, Docker Kubernetes, CI/CD pipeline setup, cloud infrastructure, cloud migration India, DevOps agency"
+        breadcrumbs={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: "Cloud & DevOps", path: "/services/cloud-devops" },
+        ]}
       />
 
       <section className="relative pt-28 pb-20 bg-white overflow-hidden">
