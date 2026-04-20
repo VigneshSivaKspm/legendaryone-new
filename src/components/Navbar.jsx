@@ -79,7 +79,7 @@ const Navbar = ({ announcementVisible = false }) => {
         <RouterNavLink
           to="/projects"
           className={({ isActive }) =>
-            `flex flex-col items-center px-4 sm:px-5 py-2.5 rounded-xl transition-all duration-200 border-2 bg-llime/35 border-llime/60 hover:bg-llime/45 ${
+            `flex flex-col items-center px-2 sm:px-5 py-1.5 sm:py-2.5 rounded-xl transition-all duration-200 border-2 bg-llime/35 border-llime/60 hover:bg-llime/45 ${
               isActive
                 ? "shadow-[0_0_20px_rgba(200,240,120,0.3)]"
                 : "hover:shadow-[0_0_20px_rgba(200,240,120,0.3)]"
@@ -87,10 +87,10 @@ const Navbar = ({ announcementVisible = false }) => {
           }
         >
           <span className="text-[11px] sm:text-[13px] font-bold text-navy hover:text-navy leading-tight">
-            Work We
+            Portfolio
           </span>
-          <span className="hidden sm:block text-[9px] font-semibold text-navy/70 hover:text-navy/70 leading-tight">
-            Proud Of
+          <span className="block text-[9px] font-semibold text-navy/70 hover:text-navy/70 leading-tight">
+            ✨ Work We Proud Of
           </span>
         </RouterNavLink>
 
