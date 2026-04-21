@@ -210,9 +210,6 @@ const LeadCapturePopup = () => {
 
               {/* Trust bar */}
               <div className="flex items-center gap-4 mb-5 py-3 px-4 bg-slate-50 rounded-xl text-xs text-slate-600 font-medium">
-                <span className="flex items-center gap-1">
-                  <span className="font-black text-navy">50+</span> Projects
-                </span>
                 <span className="w-px h-4 bg-slate-200" />
                 <span className="flex items-center gap-1">
                   <span className="font-black text-navy">100%</span>{" "}
