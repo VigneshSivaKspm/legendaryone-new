@@ -507,7 +507,7 @@ const Contact = ({ hideSEO = false }) => {
                           />
                         </svg>
                       </div>
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
                           {item.label}
                         </p>
@@ -515,7 +515,7 @@ const Contact = ({ hideSEO = false }) => {
                         {item.href ? (
                           <a
                             href={item.href}
-                            className="text-sm text-navy font-semibold group-hover:text-azure transition-colors duration-300 flex flex-wrap items-center gap-2"
+                            className="text-sm text-navy font-semibold group-hover:text-azure transition-colors duration-300 flex flex-wrap items-center gap-2 break-all"
                           >
                             {item.value}
                             <svg
